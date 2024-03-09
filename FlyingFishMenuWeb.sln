@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyingFishMenuWeb.Server", "FlyingFishMenuWeb.Server\FlyingFishMenuWeb.Server.csproj", "{7EA8794E-E5AD-4B10-A2AD-03FF7FC85799}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "flyingfishmenuweb.client", "flyingfishmenuweb.client\flyingfishmenuweb.client.esproj", "{6F2C044D-5853-4F17-B2F7-31175170039B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EA8794E-E5AD-4B10-A2AD-03FF7FC85799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA8794E-E5AD-4B10-A2AD-03FF7FC85799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA8794E-E5AD-4B10-A2AD-03FF7FC85799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA8794E-E5AD-4B10-A2AD-03FF7FC85799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F2C044D-5853-4F17-B2F7-31175170039B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2C044D-5853-4F17-B2F7-31175170039B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2C044D-5853-4F17-B2F7-31175170039B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6F2C044D-5853-4F17-B2F7-31175170039B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2C044D-5853-4F17-B2F7-31175170039B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F2C044D-5853-4F17-B2F7-31175170039B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C50B679D-E581-47F5-B585-71537D32C3BA}
+	EndGlobalSection
+EndGlobal
