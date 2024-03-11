@@ -1,1 +1,0 @@
-export const url = 'http://localhost:5055/api/MenuItem' as const;

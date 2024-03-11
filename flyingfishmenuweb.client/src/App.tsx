@@ -7,12 +7,16 @@ import { GetAllMenuItem } from './api/MenuItemAPI';
 //BootStrap
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { MenuItem } from './model/MenuModel';
 
 function App() {
     const [selectedCategory, setSelectedCategory] = useState("fishandchips");
+    const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
     useEffect(() => {
-        GetAllMenuItem();
+        GetAllMenuItem().then((data) => {
+            setMenuItems(data);
+        });
     }, []);
 
     return (
@@ -22,7 +26,7 @@ function App() {
                     <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                 </Row>
                 <Row>
-                    <Menu selectedCategory={selectedCategory} />
+                    <Menu selectedCategory={selectedCategory} menuItems={menuItems} />
                 </Row>
             </Container>
         </div>
