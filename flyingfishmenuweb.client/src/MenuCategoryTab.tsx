@@ -10,7 +10,7 @@ interface Props {
 }
 
 const menuCategories: MenuCategory[] = [
-    { id : MenuCategoryEnum.FishAndChips, name: "Fish & Chips" },
+    { id : MenuCategoryEnum.FishAndChips, name: "Fish&Chips" },
     { id : MenuCategoryEnum.SetMeals, name: "Set Meals" },
     { id : MenuCategoryEnum.Tapas, name: "Tapas" }
 ]
