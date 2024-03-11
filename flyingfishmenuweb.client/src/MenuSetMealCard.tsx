@@ -1,8 +1,11 @@
 import { MenuItemPriceDetail, MenuItem } from "./model/MenuModel.ts";
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Card } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
+
 
 interface Props {
     menuItem: MenuItem;
@@ -14,10 +17,6 @@ const cardStyle = {
 
 const cardBodyStyle = {
     textAlign: 'start' as const
-}
-
-const cardBodyButtonStyle = {
-    position: 'relative' as const
 }
 
 const buttonStyle = {
@@ -33,7 +32,10 @@ export default function MenuSetMealCard(props: Props) {
 
     return (
         <>
-            <Card key={"card"+props.menuItem.id} style={cardStyle}>
+            <Card key={"card" + props.menuItem.id} style={cardStyle}>
+                <Card.Title>
+                    <Button style={buttonStyle} variant="primary">+</Button>
+                </Card.Title>
                 <Card.Body style={cardBodyStyle}>
                     <Card.Title>{props.menuItem.name}</Card.Title>
                     <Card.Text>Containing: </Card.Text>
@@ -45,8 +47,15 @@ export default function MenuSetMealCard(props: Props) {
                         <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
                     </ListGroup>
                 </Card.Body>
-                <Card.Body style={cardBodyButtonStyle}>
-                    <Button style={buttonStyle} variant="primary">+</Button>
+                <Card.Body style={{ display: 'flex' }}>
+                    <Form.Control
+                        type="text"
+                        id={props.menuItem.id + "-textbox"}
+                        disabled
+                    />
+                    <DropdownButton id="dropdown-basic-button" title="">
+                        {menuSetMealPrices}
+                    </DropdownButton>
                 </Card.Body>
             </Card>
         </>

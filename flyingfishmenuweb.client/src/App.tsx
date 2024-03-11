@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Menu from './Menu';
-import MenuCategoryTab from './MenuCategoryTab';
-import { GetAllMenuItem } from './api/MenuItemAPI';
+import Menu from './Menu.tsx';
+import MenuCategoryTab from './MenuCategoryTab.tsx';
+import { GetAllMenuItem } from './api/MenuItemAPI.ts';
 
 //BootStrap
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import { MenuItem } from './model/MenuModel';
+import { Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import { MenuItem } from './model/MenuModel.ts';
 
 function App() {
     const [selectedCategory, setSelectedCategory] = useState("fishandchips");

@@ -1,8 +1,8 @@
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+import { Tab } from 'react-bootstrap';
+import { Tabs } from 'react-bootstrap';
 
-import { useAppSelector } from './app/hooks'
-import { MenuCategory, MenuCategoryEnum } from './model/MenuModel';
+import { useAppSelector } from './app/hooks.ts'
+import { MenuCategory, MenuCategoryEnum } from './model/MenuModel.ts';
 
 interface Props {
     selectedCategory: string;
@@ -29,7 +29,7 @@ export default function MenuCategoryTab(props: Props) {
                 id="uncontrolled-tab-example"
                 className="mb-3"
                 justify
-                onSelect={(k) => props.setSelectedCategory(k)}
+                onSelect={(k) => props.setSelectedCategory(k == null ? "" : k)}
             >
                 {menuCategoryTabs}
             </Tabs>

@@ -1,4 +1,3 @@
-
 export enum MenuCategoryEnum {
     FishAndChips = "fishandchips",
     SetMeals = "setmeals",

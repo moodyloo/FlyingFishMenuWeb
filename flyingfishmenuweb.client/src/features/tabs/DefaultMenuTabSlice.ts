@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
-import { MenuCategoryEnum } from '../../model/MenuModel'
+import type { RootState } from '../../app/store.ts'
+import { MenuCategoryEnum } from '../../model/MenuModel.ts'
 
 // Define a type for the slice state
 interface DefaultMenuTabState {
