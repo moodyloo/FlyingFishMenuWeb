@@ -1,8 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { MenuItem, MenuCategoryEnum } from './model/MenuModel';
-import MenuItemCard from './MenuItemCard';
-import MenuSetMealCard from './MenuSetMealCard';
+import { MenuItem, MenuCategoryEnum } from './model/MenuModel.ts';
+import MenuItemCard from './MenuItemCard.tsx';
+import MenuSetMealCard from './MenuSetMealCard.tsx';
 
 const containerStyle: object = {
     display: "flex",
@@ -28,8 +28,10 @@ export default function Menu(props: Props) {
     });
 
     return (
-        <Container style={containerStyle} fluid>
-            {menuItemComponents}
-        </Container>
+        <>
+            <Container style={containerStyle} fluid>
+                {menuItemComponents}
+            </Container>
+        </>
     )
 }

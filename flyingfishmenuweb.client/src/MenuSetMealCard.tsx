@@ -1,4 +1,4 @@
-import { MenuCategoryEnum, MenuItem } from "./model/MenuModel";
+import { MenuItemPriceDetail, MenuItem } from "./model/MenuModel.ts";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
@@ -27,7 +27,7 @@ const buttonStyle = {
 }
 
 export default function MenuSetMealCard(props: Props) {
-    const menuSetMealPrices = props.menuItem.priceDetails.map((itemPrice, i) => {
+    const menuSetMealPrices = props.menuItem.priceDetails.map((itemPrice: MenuItemPriceDetail, i: number) => {
         return <Dropdown.Item id={`Price-${i}-${props.menuItem.id}`}>{`\u00A3${itemPrice.price.toFixed(2)} - ${itemPrice.size}`}</Dropdown.Item>;
     });
 
