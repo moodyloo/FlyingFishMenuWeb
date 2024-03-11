@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import App from './App.tsx'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { store } from './app/store'
+import { store } from './app/store.js'
 import { ErrorBoundary } from "react-error-boundary";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -15,5 +15,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <App />
             </Provider>
         </ErrorBoundary>
-    </React.StrictMode>,
+    </React.StrictMode>
 )
