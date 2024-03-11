@@ -1,5 +1,5 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import { Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { MenuItem, MenuCategoryEnum } from './model/MenuModel.ts';
 import MenuItemCard from './MenuItemCard.tsx';
 import MenuSetMealCard from './MenuSetMealCard.tsx';

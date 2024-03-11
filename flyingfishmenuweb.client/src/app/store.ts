@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import defaultMenuTabReducer from '../features/tabs/DefaultMenuTabSlice';
-import countryISOReducer  from '../features/tabs/CountryISOSlice';
+import defaultMenuTabReducer from '../features/tabs/DefaultMenuTabSlice.ts';
+import countryISOReducer  from '../features/tabs/CountryISOSlice.ts';
 
 export const store = configureStore({
     reducer: {
