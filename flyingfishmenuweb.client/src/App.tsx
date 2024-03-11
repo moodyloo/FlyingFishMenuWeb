@@ -10,7 +10,7 @@ import { Row } from 'react-bootstrap';
 import { MenuItem } from './model/MenuModel.ts';
 
 function App() {
-    const [selectedCategory, setSelectedCategory] = useState("fishandchips");
+    const [selectedCategory, setSelectedCategory] = useState("fishandchips"); 
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
     useEffect(() => {
