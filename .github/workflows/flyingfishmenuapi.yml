@@ -47,5 +47,3 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.flyingfishmenuapi_1508 }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_JOLLY_CLIFF_06B700B03 }}
-        repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
