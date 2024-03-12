@@ -1,4 +1,5 @@
 using FlyingFishMenuWeb.Server;
+using Microsoft.AspNetCore.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,15 +36,11 @@ app.UseStaticFiles();
 
 
 app.UseSwagger();
+app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        options.RoutePrefix = string.Empty;
-    });
 }
 
 //app.UseHttpsRedirection();
@@ -53,6 +50,10 @@ app.UseCors(Consts.MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/", () => "Hello World!")
+.WithName("flyingfish")
+.WithOpenApi();
 
 app.MapControllerRoute(
     name: "default",
