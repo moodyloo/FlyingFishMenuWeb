@@ -5,7 +5,7 @@ import { url } from '../Consts.ts';
 export async function GetAllMenuItem() : Promise<MenuItem[]|[]> {
     try
     {
-        const response = await axios.get<MenuItem[]>(url + '/api/GetMenu');
+        const response = await axios.get<MenuItem[]>(url + '/api/MenuItem');
         return response.data;
     }
     catch (error) {
