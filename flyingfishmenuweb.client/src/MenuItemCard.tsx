@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { MenuItem } from "./model/MenuModel.ts";
-import { Card } from 'react-bootstrap';
+import { Card, ListGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
-import { DropdownButton } from 'react-bootstrap';
-import { Dropdown } from 'react-bootstrap';
+import { useAppSelector } from './app/hooks.ts'
+import { CurrencySymbolDictionary } from './Consts.ts';
 
 interface Props {
     menuItem: MenuItem;
@@ -24,29 +25,43 @@ const buttonStyle = {
 }
 
 export default function MenuItemCard(props: Props) {
+
+    const countryISO = useAppSelector((state) => state.countryISO.value);
+    const currencySymbol = CurrencySymbolDictionary[countryISO]!;
+    /**
     const menuItemPrices = props.menuItem.priceDetails.map((itemPrice, i) => {
-        return <Dropdown.Item id={`Price-${i}-${props.menuItem.id}`}>{`${itemPrice.price.toFixed(2)} - ${itemPrice.size}`}</Dropdown.Item>;
+        return <Dropdown.Item onSelect id={`Price-${i}-${props.menuItem.id}`}>{`${itemPrice.price.toFixed(2)} - ${itemPrice.size}`}</Dropdown.Item>;
+    });
+    */
+
+    const itemPrices = props.menuItem.priceDetails.map((itemPrice, i) => {
+        return <ListGroup.Item id={`Price-${i}-${props.menuItem.id}`}>{`${itemPrice.size} - ${currencySymbol}${itemPrice.price.toFixed(2)}`}</ListGroup.Item>;
     });
 
     return (
         <>
-            <Card key={"card" + props.menuItem.id} style={cardStyle}>
-                <Card.Title>
+            <Card style={cardStyle}>
+                {/**<Card.Title>
                     <Button style={buttonStyle} variant="primary">+</Button>
-                </Card.Title>
+                </Card.Title>*/}
                 <Card.Body style={cardBodyStyle}>
                     <Card.Title>{props.menuItem.name}</Card.Title>
                     <Card.Text>{props.menuItem.description}</Card.Text>
                 </Card.Body>
-                <Card.Body style={{display: 'flex'}}>
-                    <Form.Control
+                <Card.Body>
+                    {/**
+                        <Form.Control
                         type="text"
                         id={props.menuItem.id + "-textbox"}
                         disabled
-                    />
-                    <DropdownButton id="dropdown-basic-button" title="">
-                        {menuItemPrices}
-                    </DropdownButton>
+                    />*/ }
+                    <ListGroup>
+                        {itemPrices}
+                    </ListGroup>
+                    {/**
+                        <DropdownButton id="dropdown-basic-button" title="">
+                            {menuItemPrices}
+                        </DropdownButton>*/}
                 </Card.Body>
             </Card>
         </>

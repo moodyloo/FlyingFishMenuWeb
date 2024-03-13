@@ -6,7 +6,7 @@ export async function GetAllMenuItem() : Promise<MenuItem[]|[]> {
     try
     {
         const response = await axios.get<MenuItem[]>(url + '/api/MenuItem', {
-            headers: { 'Access-Control-Allow-Origin': 'https://jolly-cliff-06b700b03.5.azurestaticapps.net' }
+            //headers: { 'Access-Control-Allow-Origin': 'https://jolly-cliff-06b700b03.5.azurestaticapps.net' }
         });
         return response.data;
     }
