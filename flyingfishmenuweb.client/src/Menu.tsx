@@ -20,15 +20,11 @@ interface Props {
 export default function Menu(props: Props) {
 
     const menuItemComponents = props.menuItems.map((item) => {
-        if (item.category == props.selectedCategory) {
-            if (item.category == MenuCategoryEnum.SetMeals) {
-                return <Row key={"menu" + item.id}><MenuSetMealCard menuItem={item} /></Row>;
-            }
-            else {
-                return <Row key={"menu" + item.id}><MenuItemCard menuItem={item} /></Row>;
-            }
-        }
-        return null;
+
+        return item.category == props.selectedCategory ?
+            <Row key={"menu" + item.id}>
+                {item.category == MenuCategoryEnum.SetMeals ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard menuItem={item} />}
+            </Row> : null
     });
 
     return (
