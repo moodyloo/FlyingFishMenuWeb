@@ -197,7 +197,7 @@ namespace FlyingFish.server.Controllers
                 Id = "108" ,
                 Name = "Chicken Nuggets",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Cup of Mushy peas",
+                Description = "7 pieces of chicken nuggets",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "108", Size = "7 pieces", SizeDescription = "", Price = 4.60M},
