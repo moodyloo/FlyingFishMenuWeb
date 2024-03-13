@@ -1,8 +1,5 @@
-import { useState } from "react";
 import { MenuItem } from "./model/MenuModel.ts";
-import { Card, ListGroup, DropdownButton, Dropdown } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
+import { Card, ListGroup } from 'react-bootstrap';
 import { useAppSelector } from './app/hooks.ts'
 import { CurrencySymbolDictionary } from './Consts.ts';
 
@@ -16,12 +13,6 @@ const cardStyle = {
 
 const cardBodyStyle = {
     textAlign: 'start' as const
-}
-
-const buttonStyle = {
-    position: 'absolute' as const,
-    top: 15,
-    right: 15
 }
 
 export default function MenuItemCard(props: Props) {
