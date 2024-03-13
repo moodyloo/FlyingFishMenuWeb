@@ -1,16 +1,16 @@
 #rootlight {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     text-align: center;
-    background-color: #000;
+    background-color: #d1e5ff;
 }
 
 
 #rootdark {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     position: absolute;
     top: 0;

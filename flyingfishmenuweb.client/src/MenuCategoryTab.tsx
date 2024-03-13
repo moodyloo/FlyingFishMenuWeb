@@ -1,8 +1,9 @@
 import { Tab } from 'react-bootstrap';
 import { Tabs } from 'react-bootstrap';
 
-import { useAppSelector } from './app/hooks.ts'
 import { MenuCategory, MenuCategoryEnum } from './model/MenuModel.ts';
+
+import { useAppSelector } from './app/hooks.ts'
 
 interface Props {
     selectedCategory: string;
@@ -12,7 +13,8 @@ interface Props {
 const menuCategories: MenuCategory[] = [
     { id : MenuCategoryEnum.FishAndChips, name: "Fish&Chips" },
     { id : MenuCategoryEnum.SetMeals, name: "Set Meals" },
-    { id : MenuCategoryEnum.Tapas, name: "Tapas" }
+    { id : MenuCategoryEnum.Tapas, name: "Tapas" },
+    { id : MenuCategoryEnum.Drinks, name: "Drinks" }
 ]
 
 export default function MenuCategoryTab(props: Props) {

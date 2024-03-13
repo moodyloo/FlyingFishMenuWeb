@@ -20,8 +20,12 @@ function App() {
     }, []);
 
     return (
-        <div id="rootdark">
-            <Container data-bs-theme="dark">
+        <div id="rootlight">
+            <h1 style={{ color: '#36b5e8' }}>Flying Fish Fleet</h1>
+            <div>Call on: 01252444747</div>
+            <b>OR</b>
+            <div>Order in shop at 92A Fleet Road, Fleet GU51 4PA</div>
+            <Container data-bs-theme="light" style={{ height: '100%' }}>
                 <Row>
                     <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                 </Row>

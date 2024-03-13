@@ -1,7 +1,8 @@
 export enum MenuCategoryEnum {
     FishAndChips = "fishandchips",
     SetMeals = "setmeals",
-    Tapas = "tapas"
+    Tapas = "tapas",
+    Drinks = "drinks"
 }
 
 export interface MenuCategory {

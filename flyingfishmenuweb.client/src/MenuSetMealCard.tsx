@@ -6,7 +6,6 @@ import { Dropdown } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
 
-
 interface Props {
     menuItem: MenuItem;
 }

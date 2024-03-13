@@ -9,7 +9,9 @@ const containerStyle: object = {
     flexDirection: "row",
     justifyContent: "center",
     columnGap: "50px",
-    flexWrap: 'wrap'
+    rowGap: "25px",
+    flexWrap: 'wrap',
+    paddingBottom: '20px'
 }
 
 interface Props {
@@ -23,7 +25,7 @@ export default function Menu(props: Props) {
 
         return item.category == props.selectedCategory ?
             <Row key={"menu" + item.id}>
-                {item.category == MenuCategoryEnum.SetMeals ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard menuItem={item} />}
+                {item.category == MenuCategoryEnum.SetMeals ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard key={ "menuitemcard" + item.id } menuItem={item} />}
             </Row> : null
     });
 
