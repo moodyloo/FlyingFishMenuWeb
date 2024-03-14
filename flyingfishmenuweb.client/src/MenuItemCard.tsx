@@ -29,7 +29,7 @@ export default function MenuItemCard(props: Props) {
             <Card style={cardStyle}>
                 <Card.Body style={cardBodyStyle}>
                     <Card.Title>{props.menuItem.name}</Card.Title>
-                    <Card.Text>{props.menuItem.description}</Card.Text>
+                    {props.menuItem.description != "" ? <Card.Text> {props.menuItem.description}</Card.Text> : null}
                 </Card.Body>
                 <Card.Body>
                     <ListGroup>

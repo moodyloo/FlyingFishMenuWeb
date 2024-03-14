@@ -24,7 +24,7 @@ namespace FlyingFish.server.Controllers
                 Id = "86" ,
                 Name = "Cod",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Deep fried battered cod",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "86", Size = "Regular", SizeDescription = "Regular size cod", Price = 6.80M},
@@ -36,7 +36,7 @@ namespace FlyingFish.server.Controllers
                 Id = "88" ,
                 Name = "Rock",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Deep fried battered rock",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "88", Size = "Regular", SizeDescription = "", Price = 7.00M},
@@ -47,7 +47,7 @@ namespace FlyingFish.server.Controllers
                 Id = "89" ,
                 Name = "Haddock",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Deep fried battered haddock",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "89", Size = "Regular", SizeDescription = "", Price = 8.00M},
@@ -58,7 +58,7 @@ namespace FlyingFish.server.Controllers
                 Id = "90" ,
                 Name = "Plaice",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Deep fried battered plaice",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "90", Size = "Regular", SizeDescription = "", Price = 8.00M},
@@ -69,10 +69,10 @@ namespace FlyingFish.server.Controllers
                 Id = "91" ,
                 Name = "Scampi",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Bag of freshly fried scampi, containing 14 pieces",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "91", Size = "Regular(14)", SizeDescription = "", Price = 8.50M},
+                    new PriceDetail {Id = "91", Size = "Regular(14 pieces)", SizeDescription = "", Price = 8.50M},
                 }
             },
             new MenuItem
@@ -80,7 +80,7 @@ namespace FlyingFish.server.Controllers
                 Id = "92" ,
                 Name = "Fish Cake",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Deep fried fish cake",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "92", Size = "Regular", SizeDescription = "", Price = 2.20M},
@@ -91,7 +91,7 @@ namespace FlyingFish.server.Controllers
                 Id = "93" ,
                 Name = "Code Roe",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Pressed cod roe",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "93", Size = "Regular", SizeDescription = "", Price = 2.20M},
@@ -102,7 +102,7 @@ namespace FlyingFish.server.Controllers
                 Id = "94" ,
                 Name = "Pea Fritter",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Fried green pea fritter",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "94", Size = "Regular", SizeDescription = "", Price = 2.20M},
@@ -124,7 +124,7 @@ namespace FlyingFish.server.Controllers
                 Id = "96" ,
                 Name = "Chips",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Fried potato chips",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "96", Size = "Regular", SizeDescription = "", Price = 3.00M},
@@ -136,7 +136,7 @@ namespace FlyingFish.server.Controllers
                 Id = "98" ,
                 Name = "Sausage",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Fried sausages",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "98", Size = "Plain", SizeDescription = "", Price = 2.60M},
@@ -149,7 +149,7 @@ namespace FlyingFish.server.Controllers
                 Id = "100" ,
                 Name = "Pie",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Oven cooked pie",
+                Description = "Pukka pie",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "100", Size = "Chicken & Mushroom", SizeDescription = "", Price = 4.00M},
@@ -162,7 +162,7 @@ namespace FlyingFish.server.Controllers
                 Id = "103" ,
                 Name = "Pickled product",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Oven cooked pie",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "103", Size = "Pickled Onion", SizeDescription = "", Price = 0.80M},
@@ -175,7 +175,7 @@ namespace FlyingFish.server.Controllers
                 Id = "106" ,
                 Name = "Onion Rings",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Fried onion rings",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "106", Size = "7 pieces", SizeDescription = "", Price = 2.20M},
@@ -186,7 +186,7 @@ namespace FlyingFish.server.Controllers
                 Id = "107" ,
                 Name = "Mushy Peas",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Cup of Mushy peas",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "107", Size = "1 Cup", SizeDescription = "", Price = 2.00M},
@@ -197,7 +197,7 @@ namespace FlyingFish.server.Controllers
                 Id = "108" ,
                 Name = "Chicken Nuggets",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "7 pieces of chicken nuggets",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "108", Size = "7 pieces", SizeDescription = "", Price = 4.60M},
@@ -243,11 +243,11 @@ namespace FlyingFish.server.Controllers
                 Id = "112" ,
                 Name = "OAP Meal",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "A set meal for old aged people.",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "112", Size = "Fish & Chips", SizeDescription = "", Price = 8.00M},
-                    new PriceDetail {Id = "112", Size = "1/4 chicken & chips & curry sauce", SizeDescription = "", Price = 7.50M},
+                    new PriceDetail {Id = "112", Size = "Fish & Chips (Regular)", SizeDescription = "", Price = 8.00M},
+                    new PriceDetail {Id = "112", Size = "1/4 chicken(leg or wing) & chips & curry sauce", SizeDescription = "", Price = 7.50M},
                 }
             },
             new MenuItem
@@ -255,7 +255,7 @@ namespace FlyingFish.server.Controllers
                 Id = "115" ,
                 Name = "Extra Sauce",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Different sauces in pots",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "115A", Size = "Sweet & Sour Sauce", SizeDescription = "", Price = 2.00M},
@@ -274,7 +274,7 @@ namespace FlyingFish.server.Controllers
                 Id = "116" ,
                 Name = "Pineapple Fritter",
                 Category = MenuCategoryEnum.fishandchips.ToString(),
-                Description = "Pineapple slices coated in batter",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "116", Size = "1 slice", SizeDescription = "", Price = 0.80M},
@@ -296,7 +296,7 @@ namespace FlyingFish.server.Controllers
                 Id = "118" ,
                 Name = "Drinks",
                 Category = MenuCategoryEnum.drinks.ToString(),
-                Description = "Cans of soft drinks",
+                Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
                     new PriceDetail {Id = "118A", Size = "Coke", SizeDescription = "", Price = 1.30M},
@@ -316,10 +316,114 @@ namespace FlyingFish.server.Controllers
                 Description = "Beef with white mushroom,Sweet & sour pork,Chicken mixed vegetables,Egg fried rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "A", Size = "Standard(2 person)", SizeDescription = "For 2 person", Price = 25.90M},
-                    new PriceDetail {Id = "A", Size = "Large(3 person)", SizeDescription = "For 2 person", Price = 25.90M}
+                    new PriceDetail {Id = "AS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 25.90M},
+                    new PriceDetail {Id = "AL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 25.90M}
                 }
-            }
+            },
+            new MenuItem
+            {
+                Id = "B" ,
+                Name = "Banquet Dinner B",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Crispy chilli pork,Chicken with seasonal greens(in oyster sauce),Beef with green pepper in black bean sauce,Egg fried rice,Prawn crackers",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "BS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 28.90M},
+                    new PriceDetail {Id = "BL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 35.90M}
+                }
+            },
+            new MenuItem
+            {
+                Id = "C" ,
+                Name = "Banquet Dinner C",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Tender pork ribs in mandarin sauce,Sweet & sour king prawn(Hong Kong Style),Chicken with cashewnuts(in a light oyster sauce),Beef in black peppercorn sauce,Egg fried rice,Prawn crackers",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "CS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 36.90M},
+                    new PriceDetail {Id = "CL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 46.90M}
+                }
+            },
+            new MenuItem
+            {
+                Id = "D" ,
+                Name = "Banquet Dinner D",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Crispy szechuan aromatic duck(served with spring onions & cucumbers & hoi sin sauce and pancakes),Kung po chilli king prawn(with peanuts),Shredded crispy chilli beef,Grilled peking style chicken,Four vegetable ensemble,Yung chow special egg fried rice",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "DS", Size = "Standard(2-3 persons)", SizeDescription = "For 2-3 persons", Price = 46.90M},
+                    new PriceDetail {Id = "DL", Size = "Large(3-4 persons)", SizeDescription = "For 3-4 persons", Price = 56.90M}
+                }
+            },
+            new MenuItem
+            {
+                Id = "E" ,
+                Name = "Banquet Dinner E",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Crispy szechuan aromatic duck(served with spring onions & cucumbers & hoi sin sauce and pancakes),Prawn toast with sesame seeds, Chicken with cashewnuts, Mou shu pork(Peking Style Egg Foo Yung),Beef with green pepper in black bean sauce, Shredded crispy chilli beef, Sweet & sour king prawn(Hong Kong Style), Seasonal vegetable in oyster sauce,Yung chow special egg fried rice",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "ES", Size = "Standard(4-5 persons)", SizeDescription = "For 4-5 persons", Price = 95.90M},
+                    new PriceDetail {Id = "EL", Size = "Large(6-8 persons)", SizeDescription = "For 6-8 persons", Price = 125.90M}
+                }
+            },
+            new MenuItem
+            {
+                Id = "F" ,
+                Name = "Banquet Dinner F",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Crispy chilli chicken,Thai style green and red chilli curry with beef,Stir fried king prawn in black peppercorn sauce,Singapore style vegetable vermicelli(Rice Noodles),Prawn crackers",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "FS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 29.90M},
+                    new PriceDetail {Id = "FL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 39.90M}
+                }
+            },
+            new MenuItem
+            {
+                Id = "SET1" ,
+                Name = "Set meal 1 for one person",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Sweet & sour pork,Chicken with mushrooms,Egg fried rice",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "SET1", Size = "Standard(1 person)", SizeDescription = "", Price = 10.20M},
+                }
+            },
+            new MenuItem
+            {
+                Id = "SET2" ,
+                Name = "Set meal 2 for one person",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Sweet & sour chicken,King prawn with black bean sauce,Egg fried rice",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "SET2", Size = "Standard(1 person)", SizeDescription = "", Price = 11.50M},
+                }
+            },
+            new MenuItem
+            {
+                Id = "SET3" ,
+                Name = "Set meal 3 for one person",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Sweet & sour pork,Chicken egg fried rice",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "SET3", Size = "Standard(1 person)", SizeDescription = "", Price = 8.50M},
+                }
+            },
+            new MenuItem
+            {
+                Id = "SET4" ,
+                Name = "Set meal 4 for one person",
+                Category = MenuCategoryEnum.setmeals.ToString(),
+                Description = "Four vegetables in crystal sauce(Straw muchrooms & babycorns & chinese leaf & sugar snaps in a light garlic sauce),Steamed rice",
+                PriceDetails = new List<PriceDetail>
+                {
+                    new PriceDetail {Id = "SET4", Size = "Standard(1 person)", SizeDescription = "", Price = 8.00M},
+                }
+            },
         };
 
         private readonly ILogger<MenuItemController> _logger;
