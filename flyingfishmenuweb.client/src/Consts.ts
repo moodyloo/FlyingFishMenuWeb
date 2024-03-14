@@ -1,6 +1,4 @@
-//Web api base url
-//export const url: string = 'http://localhost:5055' as const; //for local host
-export const url: string = 'https://flyingfishmenuapi.azurewebsites.net' as const; //for deployment
+export const url: string | undefined = import.meta.env.DEV ? 'http://localhost:5055' : 'https://flyingfishmenuapi.azurewebsites.net';
 
 //Currency Symbols
 export const CurrencySymbolDictionary: { [iso: string]: string; } = {
