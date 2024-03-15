@@ -9,7 +9,8 @@ namespace FlyingFish.server.Controllers
         fishandchips,
         setmeals,
         tapas,
-        drinks
+        drinks,
+        sauces
     }
 
     [EnableCors(Consts.MyAllowSpecificOrigins)]
@@ -39,7 +40,7 @@ namespace FlyingFish.server.Controllers
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "88", Size = "Regular", SizeDescription = "", Price = 7.00M},
+                    new PriceDetail {Id = "88", Size = "", SizeDescription = "", Price = 7.00M},
 }
             },
             new MenuItem
@@ -50,7 +51,7 @@ namespace FlyingFish.server.Controllers
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "89", Size = "Regular", SizeDescription = "", Price = 8.00M},
+                    new PriceDetail {Id = "89", Size = "", SizeDescription = "", Price = 8.00M},
 }
             },
             new MenuItem
@@ -61,7 +62,7 @@ namespace FlyingFish.server.Controllers
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "90", Size = "Regular", SizeDescription = "", Price = 8.00M},
+                    new PriceDetail {Id = "90", Size = "", SizeDescription = "", Price = 8.00M},
 }
             },
             new MenuItem
@@ -72,7 +73,7 @@ namespace FlyingFish.server.Controllers
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "91", Size = "Regular(14 pieces)", SizeDescription = "", Price = 8.50M},
+                    new PriceDetail {Id = "91", Size = "14 pieces", SizeDescription = "", Price = 8.50M},
                 }
             },
             new MenuItem
@@ -83,7 +84,7 @@ namespace FlyingFish.server.Controllers
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "92", Size = "Regular", SizeDescription = "", Price = 2.20M},
+                    new PriceDetail {Id = "92", Size = "", SizeDescription = "", Price = 2.20M},
                 }
             },
             new MenuItem
@@ -94,7 +95,7 @@ namespace FlyingFish.server.Controllers
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "93", Size = "Regular", SizeDescription = "", Price = 2.20M},
+                    new PriceDetail {Id = "93", Size = "1 piece", SizeDescription = "", Price = 2.20M},
                 }
             },
             new MenuItem
@@ -105,7 +106,7 @@ namespace FlyingFish.server.Controllers
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "94", Size = "Regular", SizeDescription = "", Price = 2.20M},
+                    new PriceDetail {Id = "94", Size = "1 piece", SizeDescription = "", Price = 2.20M},
                 }
             },
             new MenuItem
@@ -116,7 +117,7 @@ namespace FlyingFish.server.Controllers
                 Description = "Bread roll with butter applied",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "95", Size = "Regular", SizeDescription = "", Price = 0.80M},
+                    new PriceDetail {Id = "95", Size = "", SizeDescription = "", Price = 0.80M},
                 }
             },
             new MenuItem
@@ -254,7 +255,7 @@ namespace FlyingFish.server.Controllers
             {
                 Id = "115" ,
                 Name = "Extra Sauce",
-                Category = MenuCategoryEnum.fishandchips.ToString(),
+                Category = MenuCategoryEnum.sauces.ToString(),
                 Description = "",
                 PriceDetails = new List<PriceDetail>
                 {
@@ -316,8 +317,8 @@ namespace FlyingFish.server.Controllers
                 Description = "Beef with white mushroom,Sweet & sour pork,Chicken mixed vegetables,Egg fried rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "AS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 25.90M},
-                    new PriceDetail {Id = "AL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 25.90M}
+                    new PriceDetail {Id = "AS", Size = "Standard (2 persons)", SizeDescription = "For 2 persons", Price = 25.90M},
+                    new PriceDetail {Id = "AL", Size = "Large (3 persons)", SizeDescription = "For 3 persons", Price = 30.90M}
                 }
             },
             new MenuItem
@@ -328,8 +329,8 @@ namespace FlyingFish.server.Controllers
                 Description = "Crispy chilli pork,Chicken with seasonal greens(in oyster sauce),Beef with green pepper in black bean sauce,Egg fried rice,Prawn crackers",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "BS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 28.90M},
-                    new PriceDetail {Id = "BL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 35.90M}
+                    new PriceDetail {Id = "BS", Size = "Standard (2 persons)", SizeDescription = "For 2 persons", Price = 28.90M},
+                    new PriceDetail {Id = "BL", Size = "Large (3 persons)", SizeDescription = "For 3 persons", Price = 35.90M}
                 }
             },
             new MenuItem
@@ -340,8 +341,8 @@ namespace FlyingFish.server.Controllers
                 Description = "Tender pork ribs in mandarin sauce,Sweet & sour king prawn(Hong Kong Style),Chicken with cashewnuts(in a light oyster sauce),Beef in black peppercorn sauce,Egg fried rice,Prawn crackers",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "CS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 36.90M},
-                    new PriceDetail {Id = "CL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 46.90M}
+                    new PriceDetail {Id = "CS", Size = "Standard (2 persons)", SizeDescription = "For 2 persons", Price = 36.90M},
+                    new PriceDetail {Id = "CL", Size = "Large (3 persons)", SizeDescription = "For 3 persons", Price = 46.90M}
                 }
             },
             new MenuItem
@@ -352,8 +353,8 @@ namespace FlyingFish.server.Controllers
                 Description = "Crispy szechuan aromatic duck(served with spring onions & cucumbers & hoi sin sauce and pancakes),Kung po chilli king prawn(with peanuts),Shredded crispy chilli beef,Grilled peking style chicken,Four vegetable ensemble,Yung chow special egg fried rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "DS", Size = "Standard(2-3 persons)", SizeDescription = "For 2-3 persons", Price = 46.90M},
-                    new PriceDetail {Id = "DL", Size = "Large(3-4 persons)", SizeDescription = "For 3-4 persons", Price = 56.90M}
+                    new PriceDetail {Id = "DS", Size = "Standard (2-3 persons)", SizeDescription = "For 2-3 persons", Price = 46.90M},
+                    new PriceDetail {Id = "DL", Size = "Large (3-4 persons)", SizeDescription = "For 3-4 persons", Price = 56.90M}
                 }
             },
             new MenuItem
@@ -364,8 +365,8 @@ namespace FlyingFish.server.Controllers
                 Description = "Crispy szechuan aromatic duck(served with spring onions & cucumbers & hoi sin sauce and pancakes),Prawn toast with sesame seeds, Chicken with cashewnuts, Mou shu pork(Peking Style Egg Foo Yung),Beef with green pepper in black bean sauce, Shredded crispy chilli beef, Sweet & sour king prawn(Hong Kong Style), Seasonal vegetable in oyster sauce,Yung chow special egg fried rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "ES", Size = "Standard(4-5 persons)", SizeDescription = "For 4-5 persons", Price = 95.90M},
-                    new PriceDetail {Id = "EL", Size = "Large(6-8 persons)", SizeDescription = "For 6-8 persons", Price = 125.90M}
+                    new PriceDetail {Id = "ES", Size = "Standard (4-5 persons)", SizeDescription = "For 4-5 persons", Price = 95.90M},
+                    new PriceDetail {Id = "EL", Size = "Large (6-8 persons)", SizeDescription = "For 6-8 persons", Price = 125.90M}
                 }
             },
             new MenuItem
@@ -376,8 +377,8 @@ namespace FlyingFish.server.Controllers
                 Description = "Crispy chilli chicken,Thai style green and red chilli curry with beef,Stir fried king prawn in black peppercorn sauce,Singapore style vegetable vermicelli(Rice Noodles),Prawn crackers",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "FS", Size = "Standard(2 persons)", SizeDescription = "For 2 persons", Price = 29.90M},
-                    new PriceDetail {Id = "FL", Size = "Large(3 persons)", SizeDescription = "For 3 persons", Price = 39.90M}
+                    new PriceDetail {Id = "FS", Size = "Standard (2 persons)", SizeDescription = "For 2 persons", Price = 29.90M},
+                    new PriceDetail {Id = "FL", Size = "Large (3 persons)", SizeDescription = "For 3 persons", Price = 39.90M}
                 }
             },
             new MenuItem
@@ -388,7 +389,7 @@ namespace FlyingFish.server.Controllers
                 Description = "Sweet & sour pork,Chicken with mushrooms,Egg fried rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "SET1", Size = "Standard(1 person)", SizeDescription = "", Price = 10.20M},
+                    new PriceDetail {Id = "SET1", Size = "", SizeDescription = "", Price = 10.20M},
                 }
             },
             new MenuItem
@@ -399,7 +400,7 @@ namespace FlyingFish.server.Controllers
                 Description = "Sweet & sour chicken,King prawn with black bean sauce,Egg fried rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "SET2", Size = "Standard(1 person)", SizeDescription = "", Price = 11.50M},
+                    new PriceDetail {Id = "SET2", Size = "", SizeDescription = "", Price = 11.50M},
                 }
             },
             new MenuItem
@@ -410,7 +411,7 @@ namespace FlyingFish.server.Controllers
                 Description = "Sweet & sour pork,Chicken egg fried rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "SET3", Size = "Standard(1 person)", SizeDescription = "", Price = 8.50M},
+                    new PriceDetail {Id = "SET3", Size = "", SizeDescription = "", Price = 8.50M},
                 }
             },
             new MenuItem
@@ -421,7 +422,7 @@ namespace FlyingFish.server.Controllers
                 Description = "Four vegetables in crystal sauce(Straw muchrooms & babycorns & chinese leaf & sugar snaps in a light garlic sauce),Steamed rice",
                 PriceDetails = new List<PriceDetail>
                 {
-                    new PriceDetail {Id = "SET4", Size = "Standard(1 person)", SizeDescription = "", Price = 8.00M},
+                    new PriceDetail {Id = "SET4", Size = "", SizeDescription = "", Price = 8.00M},
                 }
             },
         };

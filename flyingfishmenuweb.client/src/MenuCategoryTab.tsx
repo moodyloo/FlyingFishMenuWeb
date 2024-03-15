@@ -14,7 +14,8 @@ const menuCategories: MenuCategory[] = [
     { id : MenuCategoryEnum.FishAndChips, name: "Fish&Chips" },
     { id : MenuCategoryEnum.SetMeals, name: "Set Meals" },
     { id : MenuCategoryEnum.Tapas, name: "Tapas" },
-    { id : MenuCategoryEnum.Drinks, name: "Drinks" }
+    { id : MenuCategoryEnum.Drinks, name: "Drinks" },
+    { id : MenuCategoryEnum.Sauces, name: "Sauces" }
 ]
 
 export default function MenuCategoryTab(props: Props) {
@@ -30,7 +31,7 @@ export default function MenuCategoryTab(props: Props) {
                 defaultActiveKey={defaultMenuTab}
                 id="uncontrolled-tab-example"
                 className="mb-3"
-                justify
+                fill
                 onSelect={(k) => props.setSelectedCategory(k == null ? "" : k)}
             >
                 {menuCategoryTabs}

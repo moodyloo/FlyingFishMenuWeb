@@ -11,7 +11,7 @@ const containerStyle: object = {
     columnGap: "50px",
     rowGap: "25px",
     flexWrap: 'wrap',
-    paddingBottom: '20px'
+    marginBottom: '20px'
 }
 
 interface Props {

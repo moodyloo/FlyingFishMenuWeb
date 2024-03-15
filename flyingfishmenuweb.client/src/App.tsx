@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Menu from './Menu.tsx';
+import Title from './Title.tsx';
 import MenuCategoryTab from './MenuCategoryTab.tsx';
 import { GetAllMenuItem } from './api/MenuItemAPI.ts';
 
 //BootStrap
-import { Container } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { MenuItem } from './model/MenuModel.ts';
 
 function App() {
@@ -21,14 +21,11 @@ function App() {
 
     return (
         <div id="rootlight">
-            <h1 style={{ color: '#36b5e8' }}>The Flying Fish Fleet</h1>
-            <div>Call on: 01252444747</div>
-            <b>OR</b>
-            <div>Order in shop at 92 Fleet Road, Fleet, GU51 4PA</div>
-            <Container data-bs-theme="light" style={{ height: '100%' }}>
-                <Row>
-                    <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-                </Row>
+            <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '10px', backgroundColor: '#76b1ff'}}>
+                <Title />
+            </div>
+            <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <Container data-bs-theme="light" style={{ overflowY: 'auto' }}>
                 <Row>
                     <Menu selectedCategory={selectedCategory} menuItems={menuItems} />
                 </Row>

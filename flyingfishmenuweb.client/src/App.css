@@ -1,11 +1,14 @@
 #rootlight {
-    min-height: 100%;
+    height: 100vh;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     text-align: center;
     background-color: #d1e5ff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 

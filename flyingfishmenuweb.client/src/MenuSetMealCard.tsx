@@ -1,6 +1,5 @@
 import { MenuItem } from "./model/MenuModel.ts";
-import { Card } from 'react-bootstrap';
-import { ListGroup } from 'react-bootstrap';
+import { Card, ListGroup, Form } from 'react-bootstrap';
 
 import { useAppSelector } from './app/hooks.ts'
 import { CurrencySymbolDictionary } from './Consts.ts';
@@ -10,7 +9,7 @@ interface Props {
 }
 
 const cardStyle = {
-    width: '300px'
+    width: '325px'
 }
 
 const cardBodyStyle = {
@@ -21,17 +20,34 @@ const cardPriceBodyStyle = {
     flex: 'none' as const
 }
 
+const priceFormGroup = {
+    display: 'flex',
+    alignItems: 'center'
+}
+
+const priceTextBoxStyle = {
+    width: '35%'
+}
+
+const priceLabelStyle = {
+    textAlign: 'start' as const,
+    width: '65%'
+}
+
 export default function MenuSetMealCard(props: Props) {
 
     const countryISO = useAppSelector((state) => state.countryISO.value);
     const currencySymbol = CurrencySymbolDictionary[countryISO]!;
 
-    const menuSetMealItems = props.menuItem.description.split(',').map((item: string, i: number) => {
-        return <ListGroup.Item key={props.menuItem.id+"-"+i}>{item}</ListGroup.Item>
+    const menuSetMealItems = props.menuItem.description.split(',').sort().map((item: string, i: number) => {
+        return <ListGroup.Item disabled key={props.menuItem.id+"-"+i}>{item}</ListGroup.Item>
     });
 
     const setMenuPrices = props.menuItem.priceDetails.map((itemPrice, i) => {
-        return <ListGroup.Item id={`Price-${i}-${props.menuItem.id}`}>{`${itemPrice.size} - ${currencySymbol}${itemPrice.price.toFixed(2)}`}</ListGroup.Item>;
+        return <Form.Group style={priceFormGroup} className="mb-3" controlId={`Price-${i}-${props.menuItem.id}`} >
+            <Form.Label style={priceLabelStyle}>{itemPrice.size}</Form.Label>
+            <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemPrice.price.toFixed(2)}`} />
+        </Form.Group>;
     });
 
     return (
@@ -45,10 +61,10 @@ export default function MenuSetMealCard(props: Props) {
                     </ListGroup>
                 </Card.Body>
                 <Card.Body style={cardPriceBodyStyle}>
-                    <Card.Text style={{ textAlign: 'left' }} ><b>Sizes:</b></Card.Text>
-                    <ListGroup>
+                    {props.menuItem.priceDetails.length > 1 ? <Card.Text style={{ textAlign: 'left' }} ><b>Sizes:</b></Card.Text> : null}
+                    <Form>
                         {setMenuPrices}
-                    </ListGroup>
+                    </Form>
                 </Card.Body>
             </Card>
         </>
