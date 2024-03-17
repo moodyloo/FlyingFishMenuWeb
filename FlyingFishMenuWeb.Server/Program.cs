@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging.AzureAppServices;
 var builder = WebApplication.CreateBuilder(args);
 
 //Add Azure Key Vault
+/**
 if (builder.Environment.IsProduction())
 {
     builder.Logging.AddConsole();
@@ -19,6 +20,7 @@ if (builder.Environment.IsProduction())
         new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
         new DefaultAzureCredential());
 }
+*/
 
 //Add Db Context
 builder.Services.AddDbContext<AppDbContext>(options =>
