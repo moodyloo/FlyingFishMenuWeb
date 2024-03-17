@@ -24,7 +24,15 @@ namespace FlyingFish.server.Controllers
         [HttpGet("GetMenuCategories")]
         public async Task<IEnumerable<ItemCategory>> GetMenuCategory()
         {
-            return await _appDbContext.ItemCategories.ToListAsync();
+            try
+            {
+                return await _appDbContext.ItemCategories.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return null;
+            }
         }
     }
 }
