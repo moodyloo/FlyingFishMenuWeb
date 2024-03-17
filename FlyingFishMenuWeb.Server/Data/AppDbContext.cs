@@ -6,16 +6,18 @@ namespace FlyingFishMenuWeb.Server.Data
     public class AppDbContext : DbContext
     {
         public IConfiguration _config { get; set; }
-        public AppDbContext(IConfiguration config)
+        public AppDbContext(IConfiguration config, DbContextOptions<AppDbContext> options): base(options)
         {
             _config = config;
         }
 
+        /**
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
                 .UseSqlServer(_config["FlyingFishDatabaseConnection"]);
         }
+        */
 
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<MenuItemVariant> MenuItemVariants { get; set; }
