@@ -1,28 +1,21 @@
 import { Tab } from 'react-bootstrap';
 import { Tabs } from 'react-bootstrap';
 
-import { MenuCategory, MenuCategoryEnum } from './model/MenuModel.ts';
+import { MenuCategory } from './model/MenuModel.ts';
 
 import { useAppSelector } from './app/hooks.ts'
 
 interface Props {
-    selectedCategory: string;
-    setSelectedCategory: (selectedCategory: string) => void;
+    selectedCategory: number;
+    setSelectedCategory: (selectedCategory: number) => void;
+    menuCategories: MenuCategory[];
 }
 
-const menuCategories: MenuCategory[] = [
-    { id : MenuCategoryEnum.FishAndChips, name: "Fish&Chips" },
-    { id : MenuCategoryEnum.SetMeals, name: "Set Meals" },
-    { id : MenuCategoryEnum.Tapas, name: "Tapas" },
-    { id : MenuCategoryEnum.Drinks, name: "Drinks" },
-    { id : MenuCategoryEnum.Sauces, name: "Sauces" }
-]
-
 export default function MenuCategoryTab(props: Props) {
-    const defaultMenuTab = useAppSelector((state) => state.defaultMenuTab.value);
+    const defaultMenuTab: number = useAppSelector((state) => state.defaultMenuTab.value);
 
-    const menuCategoryTabs = menuCategories.map(({ id, name }) => {
-        return <Tab key={"Tab-" + id} eventKey={id} title={name} />
+    const menuCategoryTabs = props.menuCategories.map(({ id, category_Name }) => {
+        return <Tab key={"Tab-" + id} eventKey={id} title={category_Name} />
     });
 
     return (
@@ -32,7 +25,7 @@ export default function MenuCategoryTab(props: Props) {
                 id="uncontrolled-tab-example"
                 className="mb-3"
                 fill
-                onSelect={(k) => props.setSelectedCategory(k == null ? "" : k)}
+                onSelect={(k) => props.setSelectedCategory(Number(k))}
             >
                 {menuCategoryTabs}
             </Tabs>

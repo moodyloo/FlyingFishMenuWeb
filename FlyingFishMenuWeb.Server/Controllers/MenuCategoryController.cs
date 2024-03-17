@@ -10,24 +10,21 @@ namespace FlyingFish.server.Controllers
     [EnableCors(Consts.MyAllowSpecificOrigins)]
     [ApiController]
     [Route("api/[controller]")]
-    public class MenuItemController : ControllerBase
+    public class MenuCategoryController : ControllerBase
     {
-        private readonly ILogger<MenuItemController> _logger;
+        private readonly ILogger<MenuCategoryController> _logger;
         private readonly AppDbContext _appDbContext;
 
-        public MenuItemController(ILogger<MenuItemController> logger, AppDbContext context)
+        public MenuCategoryController(ILogger<MenuCategoryController> logger, AppDbContext context)
         {
             _logger = logger;
             _appDbContext = context;
         }
 
-        [HttpGet("GetMenuItems")]
-        public async Task<IEnumerable<MenuItem>> GetMenuItems()
+        [HttpGet("GetMenuCategories")]
+        public async Task<IEnumerable<ItemCategory>> GetMenuCategory()
         {
-            return await _appDbContext.MenuItems
-                .Include(e => e.ItemVariants)
-                .Include(e => e.Category)
-                .ToListAsync();
+            return await _appDbContext.ItemCategories.ToListAsync();
         }
     }
 }

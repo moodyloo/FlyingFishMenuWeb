@@ -1,22 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store.ts'
-import { MenuCategoryEnum } from '../../model/MenuModel.ts'
 
 // Define a type for the slice state
 interface DefaultMenuTabState {
-    value: string
+    value: number
 }
 
 // Define the initial state using that type
 const initialState: DefaultMenuTabState = {
-    value: MenuCategoryEnum.FishAndChips
+    value: 1
 }
 
 export const defaultMenuTabSlice = createSlice({
   name: 'defaultMenuTab',
   initialState,
   reducers: {
-      setDefaultMenuTab: (state, action: PayloadAction<string>) => {
+      setDefaultMenuTab: (state, action: PayloadAction<number>) => {
           state.value = action.payload;
       }
   },

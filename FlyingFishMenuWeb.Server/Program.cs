@@ -1,7 +1,20 @@
 using FlyingFishMenuWeb.Server;
-using Microsoft.AspNetCore.OpenApi;
+using Azure.Identity;
+using FlyingFishMenuWeb.Server.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+if (builder.Environment.IsProduction())
+{
+    builder.Configuration.AddAzureKeyVault(
+        new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
+        new DefaultAzureCredential());
+}
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+                   options.UseSqlServer(builder.Configuration["FlyingFishDatabaseConnection"])
+                   , optionsLifetime: ServiceLifetime.Scoped);
 
 // Add services to the container.
 
@@ -34,16 +47,8 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
- 
 app.UseSwagger();
 app.UseSwaggerUI();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-}
-
-//app.UseHttpsRedirection();
 
 app.UseCors(Consts.MyAllowSpecificOrigins);
 
@@ -58,5 +63,6 @@ app.MapGet("/", () => "Hello World!")
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
+
 
 app.Run();
