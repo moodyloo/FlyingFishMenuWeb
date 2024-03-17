@@ -39,14 +39,14 @@ export default function MenuSetMealCard(props: Props) {
     const countryISO = useAppSelector((state) => state.countryISO.value);
     const currencySymbol = CurrencySymbolDictionary[countryISO]!;
 
-    const menuSetMealItems = props.menuItem.description.split(',').sort().map((item: string, i: number) => {
+    const menuSetMealItems = props.menuItem.description.split('|').sort().map((item: string, i: number) => {
         return <ListGroup.Item disabled key={props.menuItem.id+"-"+i}>{item}</ListGroup.Item>
     });
 
-    const setMenuPrices = props.menuItem.priceDetails.map((itemPrice, i) => {
-        return <Form.Group style={priceFormGroup} className="mb-3" controlId={`Price-${i}-${props.menuItem.id}`} >
-            <Form.Label style={priceLabelStyle}>{itemPrice.size}</Form.Label>
-            <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemPrice.price.toFixed(2)}`} />
+    const setMenuPrices = props.menuItem.itemVariants.map((itemVariant) => {
+        return <Form.Group style={priceFormGroup} className="mb-3" key={`${itemVariant.id}-${itemVariant.menuItem_Id}`} >
+            <Form.Label style={priceLabelStyle}>{itemVariant.variant_Name}</Form.Label>
+            <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />
         </Form.Group>;
     });
 
@@ -61,7 +61,7 @@ export default function MenuSetMealCard(props: Props) {
                     </ListGroup>
                 </Card.Body>
                 <Card.Body style={cardPriceBodyStyle}>
-                    {props.menuItem.priceDetails.length > 1 ? <Card.Text style={{ textAlign: 'left' }} ><b>Sizes:</b></Card.Text> : null}
+                    {props.menuItem.itemVariants.length > 1 ? <Card.Text style={{ textAlign: 'left' }} ><b>Sizes:</b></Card.Text> : null}
                     <Form>
                         {setMenuPrices}
                     </Form>

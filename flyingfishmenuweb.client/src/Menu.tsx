@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
-import { MenuItem, MenuCategoryEnum } from './model/MenuModel.ts';
+import { MenuItem } from './model/MenuModel.ts';
 import MenuItemCard from './MenuItemCard.tsx';
 import MenuSetMealCard from './MenuSetMealCard.tsx';
 
@@ -15,7 +15,7 @@ const containerStyle: object = {
 }
 
 interface Props {
-    selectedCategory: string;
+    selectedCategory: number;
     menuItems: MenuItem[];
 }
 
@@ -23,9 +23,9 @@ export default function Menu(props: Props) {
 
     const menuItemComponents = props.menuItems.map((item) => {
 
-        return item.category == props.selectedCategory ?
+        return item.category_Id == props.selectedCategory ?
             <Row key={"menu" + item.id}>
-                {item.category == MenuCategoryEnum.SetMeals ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard key={ "menuitemcard" + item.id } menuItem={item} />}
+                {item.category_Id == 2 ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard menuItem={item} />}
             </Row> : null
     });
 

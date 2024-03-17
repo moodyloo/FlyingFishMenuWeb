@@ -40,10 +40,10 @@ export default function MenuItemCard(props: Props) {
     const countryISO = useAppSelector((state) => state.countryISO.value);
     const currencySymbol = CurrencySymbolDictionary[countryISO]!;
 
-    const itemPrices = props.menuItem.priceDetails.map((itemPrice, i) => {
-        return <Form.Group style={priceFormGroup} className="mb-2" controlId={`Price-${i}-${props.menuItem.id}`} >
-            <Form.Label style={priceLabelStyle}>{itemPrice.size}</Form.Label>
-            <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemPrice.price.toFixed(2)}`} />
+    const itemPrices = props.menuItem.itemVariants.map((itemVariant) => {
+        return <Form.Group style={priceFormGroup} className="mb-2" key={`${itemVariant.id}-${itemVariant.menuItem_Id}`} >
+            <Form.Label style={priceLabelStyle}>{itemVariant.variant_Name}</Form.Label>
+            <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />
         </Form.Group>;
     });
 
