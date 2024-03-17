@@ -2,16 +2,25 @@ using FlyingFishMenuWeb.Server;
 using Azure.Identity;
 using FlyingFishMenuWeb.Server.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.AzureAppServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Add Azure Key Vault
 if (builder.Environment.IsProduction())
 {
+    builder.Logging.AddConsole();
+    builder.Logging.AddDebug();
+    builder.Logging.AddAzureWebAppDiagnostics();
+
+    builder.Services.Configure<AzureFileLoggerOptions>(builder.Configuration.GetSection("AzureLogging"));
+
     builder.Configuration.AddAzureKeyVault(
         new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
         new DefaultAzureCredential());
 }
 
+//Add Db Context
 builder.Services.AddDbContext<AppDbContext>(options =>
                    options.UseSqlServer(builder.Configuration["FlyingFishDatabaseConnection"])
                    , optionsLifetime: ServiceLifetime.Scoped);
