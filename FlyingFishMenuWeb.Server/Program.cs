@@ -6,6 +6,10 @@ using Microsoft.Extensions.Logging.AzureAppServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var clientId = builder.Configuration["AzureAD:ClientId"];
+var clientSecret = builder.Configuration["AzureAD:ClientSecret"];
+var tenantId = builder.Configuration["AzureAD:TenantId"];
+
 //Add Azure Key Vault
 if (builder.Environment.IsProduction())
 {
@@ -14,11 +18,12 @@ if (builder.Environment.IsProduction())
     builder.Logging.AddAzureWebAppDiagnostics();
 
     builder.Services.Configure<AzureFileLoggerOptions>(builder.Configuration.GetSection("AzureLogging"));
-
-    builder.Configuration.AddAzureKeyVault(
-        new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
-        new DefaultAzureCredential());
 }
+
+
+builder.Configuration.AddAzureKeyVault(
+    new Uri($"https://{builder.Configuration["AzureAD:KeyVaultName"]}.vault.azure.net/"),
+    new ClientSecretCredential(tenantId, clientId, clientSecret));
 
 //Add Db Context
 builder.Services.AddDbContext<AppDbContext>(options =>
