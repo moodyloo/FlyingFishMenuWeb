@@ -28,7 +28,7 @@ builder.Configuration.AddAzureKeyVault(
 //Add Db Context
 builder.Services.AddDbContext<AppDbContext>(options =>
                    options.UseSqlServer(builder.Configuration["FlyingFishDatabaseConnection"])
-                   , optionsLifetime: ServiceLifetime.Scoped);
+                   , optionsLifetime: ServiceLifetime.Scoped); 
 
 // Add services to the container.
 
