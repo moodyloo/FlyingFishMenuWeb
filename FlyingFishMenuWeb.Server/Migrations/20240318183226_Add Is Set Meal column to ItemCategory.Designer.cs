@@ -4,6 +4,7 @@ using FlyingFishMenuWeb.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyingFishMenuWeb.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240318183226_Add Is Set Meal column to ItemCategory")]
+    partial class AddIsSetMealcolumntoItemCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +27,7 @@ namespace FlyingFishMenuWeb.Server.Migrations
 
             modelBuilder.Entity("FlyingFish.server.Model.ItemCategory", b =>
                 {
-                    b.Property<string?>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -32,6 +35,9 @@ namespace FlyingFishMenuWeb.Server.Migrations
 
                     b.Property<string>("Category_Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsSetMeal")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -43,7 +49,7 @@ namespace FlyingFishMenuWeb.Server.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string?>("Category_Id")
+                    b.Property<int?>("Category_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")

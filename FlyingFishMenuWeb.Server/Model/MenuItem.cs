@@ -11,7 +11,6 @@ namespace FlyingFish.server.Model
 
         public ICollection<MenuItemVariant>? ItemVariants { get; set; }
         public int? Category_Id { get; set; }
-        [JsonIgnore]
         public ItemCategory? Category { get; set; }
     }
 
@@ -19,6 +18,7 @@ namespace FlyingFish.server.Model
     {
         public int? Id { get; set; }
         public string? Category_Name { get; set; }
+        public bool? IsSetMeal { get; set; }
         [JsonIgnore]
         public ICollection<MenuItem> MenuItems { get; set; }
     }

@@ -25,7 +25,7 @@ export default function Menu(props: Props) {
 
         return item.category_Id == props.selectedCategory ?
             <Row key={"menu" + item.id}>
-                {item.category_Id == 2 ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard menuItem={item} />}
+                {item.category.isSetMeal ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard menuItem={item} />}
             </Row> : null
     });
 

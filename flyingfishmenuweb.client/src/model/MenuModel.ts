@@ -1,6 +1,7 @@
 export interface MenuCategory {
     id: number;
     category_Name: string;
+    isSetMeal: boolean;
 }
 export interface MenuItem {
     id: string,
@@ -8,6 +9,7 @@ export interface MenuItem {
     description: string,
     itemVariants: ItemVariant[],
     category_Id: number
+    category: MenuCategory
 }
 
 export interface ItemVariant {

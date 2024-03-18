@@ -88,6 +88,7 @@ namespace FlyingFishMenuWeb.Server.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            /**
             migrationBuilder.DropTable(
                 name: "MenuItemVariants");
 
@@ -96,6 +97,7 @@ namespace FlyingFishMenuWeb.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "ItemCategories");
+            */
         }
     }
 }
