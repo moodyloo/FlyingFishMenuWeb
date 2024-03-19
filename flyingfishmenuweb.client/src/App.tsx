@@ -6,13 +6,14 @@ import MenuCategoryTab from './MenuCategoryTab.tsx';
 import { GetAllMenuItem, GetMenuCategories } from './api/MenuItemAPI.ts';
 
 //BootStrap
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Form } from 'react-bootstrap';
 import { MenuCategory, MenuItem } from './model/MenuModel.ts';
 
 function App() {
     const [selectedCategory, setSelectedCategory] = useState<number>(1);
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const [menuCategories, setMenuCategories] = useState<MenuCategory[]>([]);
+    const [searchText, setSearchText] = useState<string>("");
 
     useEffect(() => {
         GetAllMenuItem().then((data) => {
@@ -25,17 +26,31 @@ function App() {
 
     return (
         <div id="rootlight">
-            <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '10px', backgroundColor: '#76b1ff'}}>
+            <div style={titleStyle}>
                 <Title />
             </div>
-            <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} menuCategories={menuCategories} />
-            <Container data-bs-theme="light" style={{ overflowY: 'auto' }}>
+            <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} menuCategories={menuCategories} setSearchText={setSearchText} />
+            <Form.Control style={searchBarStyle} size="sm" type="text" placeholder="Search dishes" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+            {menuItems.length > 0 ?
+            <Container data-bs-theme="light" style={menuContainerStyle}>
                 <Row>
-                    <Menu selectedCategory={selectedCategory} menuItems={menuItems} />
+                    <Menu selectedCategory={selectedCategory} menuItems={menuItems} searchText={searchText} />
                 </Row>
-            </Container>
+            </Container> : <div>Loading...</div>}
         </div>
     )
 }
+
+const searchBarStyle = { marginBottom: '5px' }
+
+const menuContainerStyle = { overflowY: 'auto' as const}
+
+const titleStyle = {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    marginBottom: '5px',
+    backgroundColor: '#76b1ff'
+}
+
 
 export default App

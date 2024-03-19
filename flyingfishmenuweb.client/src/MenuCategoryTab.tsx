@@ -3,12 +3,15 @@ import { Tabs } from 'react-bootstrap';
 
 import { MenuCategory } from './model/MenuModel.ts';
 
+import './MenuCategoryTab.css';
+
 import { useAppSelector } from './app/hooks.ts'
 
 interface Props {
     selectedCategory: number;
-    setSelectedCategory: (selectedCategory: number) => void;
     menuCategories: MenuCategory[];
+    setSelectedCategory: (selectedCategory: number) => void;
+    setSearchText: (searchText: string) => void;
 }
 
 export default function MenuCategoryTab(props: Props) {
@@ -22,10 +25,10 @@ export default function MenuCategoryTab(props: Props) {
         <>
             <Tabs
                 defaultActiveKey={defaultMenuTab}
-                id="uncontrolled-tab-example"
-                className="mb-3"
+                id=""
+                className="mb-1"
                 fill
-                onSelect={(k) => props.setSelectedCategory(Number(k))}
+                onSelect={(k) => { props.setSelectedCategory(Number(k)); props.setSearchText("") }}
             >
                 {menuCategoryTabs}
             </Tabs>

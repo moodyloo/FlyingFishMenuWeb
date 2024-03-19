@@ -17,11 +17,12 @@ const containerStyle: object = {
 interface Props {
     selectedCategory: number;
     menuItems: MenuItem[];
+    searchText: string;
 }
 
 export default function Menu(props: Props) {
 
-    const menuItemComponents = props.menuItems.map((item) => {
+    const menuItemComponents = props.menuItems.filter(menuItem => menuItem.name.toUpperCase().indexOf(props.searchText.toUpperCase()) != -1).map((item) => {
 
         return item.category_Id == props.selectedCategory ?
             <Row key={"menu" + item.id}>
