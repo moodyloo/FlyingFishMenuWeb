@@ -29,14 +29,14 @@ function App() {
             <div style={titleStyle}>
                 <Title />
             </div>
-            <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} menuCategories={menuCategories} setSearchText={setSearchText} />
+            {menuCategories.length > 0 ? <MenuCategoryTab selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} menuCategories={menuCategories} setSearchText={setSearchText} /> : null}
             <Form.Control style={searchBarStyle} size="sm" type="text" placeholder="Search dishes" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             {menuItems.length > 0 ?
             <Container data-bs-theme="light" style={menuContainerStyle}>
                 <Row>
                     <Menu selectedCategory={selectedCategory} menuItems={menuItems} searchText={searchText} />
                 </Row>
-            </Container> : <div>Loading...</div>}
+            </Container> : <div>Loading... (If taking too long please refresh the page)</div>}
         </div>
     )
 }
