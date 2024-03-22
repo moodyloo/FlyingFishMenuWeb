@@ -1,8 +1,6 @@
 name: Build and deploy .NET Core application to Web App flyingfishmenuapi
 on:
-  workflow_run:
-    branches:
-    - master
+  workflow_dispatch:
   push:
     branches:
     - master
@@ -14,6 +12,7 @@ env:
   WORKING_DIRECTORY: FlyingFishMenuWeb.Server
 jobs:
   build:
+    if: github.ref_name == github.event.repository.default_branch
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
@@ -35,7 +34,7 @@ jobs:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
   deploy:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref_name == github.event.repository.default_branch
     runs-on: windows-latest
     needs: build
     steps:
