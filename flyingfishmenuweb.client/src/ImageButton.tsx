@@ -1,34 +1,25 @@
 import { Button, Image } from 'react-bootstrap';
 
 import './ImageButton.css';
-import { useEffect, useState } from 'react';
 
 interface Props {
     imageText: string;
     imageUrl: string;
 }
 
-
-
 export default function ImageButton(props: Props) {
-    const [image, setImage] = useState<string>("");
+    function getImageUrl(name: string) {
+        return new URL(`./assets/${name}`, import.meta.url).href
+    }
 
-    useEffect(() => {
-        import(`./assets/${props.imageUrl}`).then((result) => {
-            setImage(result.default);
-        }).catch((err) => {
-            console.log(err);
-        });
-    }, [props.imageUrl]);
-
-  return (
-      <>
-          <Button style={buttonStyle}>
-              <h2 style={textStyle}>{props.imageText}</h2>
-              <Image rounded style={imgStyle} src={image}></Image>
-          </Button>
-      </>
-  );
+    return (
+        <>
+            <Button style={buttonStyle}>
+                <h2 style={textStyle}>{props.imageText}</h2>
+                <Image rounded style={imgStyle} src={getImageUrl(props.imageUrl)}></Image>
+            </Button>
+        </>
+    );
 }
 
 const textStyle = {
