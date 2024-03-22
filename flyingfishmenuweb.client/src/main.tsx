@@ -15,12 +15,13 @@ import { ErrorBoundary } from "react-error-boundary";
 
 //react-router-dom
 import { BrowserRouter } from 'react-router-dom';
+import ErrorPage from './ErrorPage.tsx';
 
 const root = createRoot(document.getElementById('root')!);
 
 root.render(
     <React.StrictMode>
-        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+        <ErrorBoundary fallback={<ErrorPage/>}>
             <Provider store={store}>
                 <BrowserRouter>
                     <App />

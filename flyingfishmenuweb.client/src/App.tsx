@@ -20,11 +20,11 @@ function App() {
     const location = useLocation();
 
     useEffect(() => {
-        GetMenuCategories().then((data) => {
-            setMenuCategories(data);
+        GetMenuCategories().then((categories) => {
+            setMenuCategories(categories);
 
-            GetAllMenuItem().then((data) => {
-                setMenuItems(data);
+            GetAllMenuItem().then((items) => {
+                setMenuItems(items);
             });
         });
     }, []);
