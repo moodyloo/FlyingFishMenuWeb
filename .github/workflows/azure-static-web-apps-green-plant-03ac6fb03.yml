@@ -1,6 +1,7 @@
 name: Flying Fish Web DEV workflow
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - DEV
