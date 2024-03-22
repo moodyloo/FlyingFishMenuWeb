@@ -1,7 +1,10 @@
 import { Row, Form, Container } from 'react-bootstrap';
+
 import { MenuItem } from './model/MenuModel.ts';
+
 import MenuItemCard from './MenuItemCard.tsx';
 import MenuSetMealCard from './MenuSetMealCard.tsx';
+import Title from './Title.tsx';
 
 import './Menu.css';
 
@@ -22,6 +25,7 @@ interface Props {
     setSearchText: (searchText: string) => void;
 }
 
+//Sort menu items in order of their numerical Id value
 const sortFunction = (a: MenuItem, b: MenuItem): number => {
     const regex = new RegExp("([a-z]|[A-Z]|[-])+");
     const aNumeric: number = a.id.replace(regex, "") == "" ? -1 : parseInt(a.id.replace(regex, ""));
@@ -37,6 +41,7 @@ const sortFunction = (a: MenuItem, b: MenuItem): number => {
 
 export default function Menu(props: Props) {
 
+    //Filter menu items based on search term
     const filterFunction = (menuItem: MenuItem): boolean => {
         const textToBeSearched: string = `${menuItem.name.toUpperCase()} ${menuItem.description.toUpperCase()}`;
         return textToBeSearched.indexOf(props.searchText.toUpperCase()) != -1
@@ -51,6 +56,7 @@ export default function Menu(props: Props) {
 
     return (
         <>
+            <Title titleName={props.menuItems[0]?.category.category_Name} />
             <Form.Control style={searchBarStyle} size="sm" type="text" placeholder="Search dishes" value={props.searchText} onChange={(e) => props.setSearchText(e.target.value)} />
             <Container style={containerStyle} fluid>
                 {menuItemComponents}
