@@ -19,9 +19,9 @@ namespace FlyingFish.server.Model
         public int? Id { get; set; }
         public string? Category_Name { get; set; }
         public bool? IsSetMeal { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
         [JsonIgnore]
-        public ICollection<MenuItem> MenuItems { get; set; }
+        public ICollection<MenuItem>? MenuItems { get; set; }
     }
 
     public class MenuItemVariant

@@ -32,7 +32,7 @@ namespace FlyingFish.server.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return null;
+                return new ItemCategory[0];
             }
         }
     }
