@@ -29,7 +29,7 @@ function App() {
     }, []);
 
     const menuCategoryRoutes = menuCategories.map((menuCategory: MenuCategory) => {
-        return <Route errorElement={<ErrorPage />} path={`/${menuCategory.category_Name}`} element={<Menu menuItems={menuItems.filter(menuItem => menuItem.category_Id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} />} />
+        return <Route key={"route/"+menuCategory.id} errorElement={<ErrorPage />} path={`/${menuCategory.category_Name}`} element={<Menu menuItems={menuItems.filter(menuItem => menuItem.category_Id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} />} />
     });
 
     return (
@@ -38,7 +38,7 @@ function App() {
                 <Title />
             </div>
             <Routes>
-                <Route errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
+                <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
                 {menuCategoryRoutes}
             </Routes>
         </div>

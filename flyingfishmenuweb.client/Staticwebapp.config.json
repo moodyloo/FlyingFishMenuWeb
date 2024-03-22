@@ -4,6 +4,6 @@
         ".mjs": "application/javascript",
         ".jsx": "application/javascript",
         ".tsx": "application/javascript",
-        ".ts": "application/javascript"
+        ".ts": "application/javascript",
     } 
 }

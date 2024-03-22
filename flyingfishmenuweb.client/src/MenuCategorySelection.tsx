@@ -13,8 +13,8 @@ interface Props {
 }
 
 export default function MenuCategorySelection(props: Props) {
-    const menuCategoryTabs = props.menuCategories.map(({ category_Name, imageUrl }) => {
-        return <Row>
+    const menuCategoryTabs = props.menuCategories.map(({ category_Name, imageUrl, id }) => {
+        return <Row key={"menuCategory-" + id}>
             <Link to={`/${category_Name}`}>
                 <ImageButton imageText={category_Name} imageUrl={imageUrl} />
             </Link>
