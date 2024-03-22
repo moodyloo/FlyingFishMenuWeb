@@ -1,6 +1,9 @@
 name: Azure Static Web Apps CI/CD
 
 on:
+  workflow_run:
+    branches:
+      - master
   push:
     branches:
       - master
@@ -11,7 +14,7 @@ on:
 
 jobs:
   build_and_deploy_job:
-    if: github.ref == 'refs/heads/master' && (github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed'))
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
