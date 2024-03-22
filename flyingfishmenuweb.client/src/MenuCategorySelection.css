@@ -1,0 +1,19 @@
+#tabroot {
+    display: 'flex';
+    flex-direction: row;
+}
+
+.nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link {
+    padding-bottom: 2px;
+    padding-top: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.nav-tabs > li > .nav-link {
+    border-color: #76b1ff;
+}
+
+.nav-tabs > li > .nav-link:hover {
+    border-color: #0069d3;
+}

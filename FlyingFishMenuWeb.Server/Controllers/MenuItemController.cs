@@ -4,6 +4,7 @@ using FlyingFishMenuWeb.Server.Data;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace FlyingFish.server.Controllers
 {
@@ -26,10 +27,12 @@ namespace FlyingFish.server.Controllers
         {
             try
             {
-                return await _appDbContext.MenuItems
+                var result = await _appDbContext.MenuItems
                     .Include(e => e.ItemVariants)
                     .Include(e => e.Category)
                     .ToListAsync();
+
+                return result;
             }
             catch (Exception ex)
             {

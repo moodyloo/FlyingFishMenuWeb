@@ -1,4 +1,4 @@
-import { MenuItem } from "./model/MenuModel.ts";
+import { ItemVariant, MenuItem } from "./model/MenuModel.ts";
 import { Card, ListGroup, Form } from 'react-bootstrap';
 import { useAppSelector } from './app/hooks.ts'
 import { CurrencySymbolDictionary } from './Consts.ts';
@@ -35,12 +35,27 @@ const priceLabelStyle = {
     width: '65%'
 }
 
+//sort vegetarian choices and non-vegetarian choices
+//sort by price also
+const sortFunction = (a: ItemVariant, b: ItemVariant): number => {
+    const regex = new RegExp("VEGETARIAN|VEG|VEGETABLE");
+    let aValue = a.variant_Name.toUpperCase().match(regex) == null ? 1 : 0;
+    let bValue = b.variant_Name.toUpperCase().match(regex) == null ? 1 : 0;
+
+    //further sort by price, cheapest to more expensive
+    if (aValue == bValue) {
+        aValue = a.price < b.price ? 1 : 0;
+        bValue = b.price < a.price ? 1 : 0;
+    }
+
+    return aValue > bValue ? -1 : 1;
+}
 export default function MenuItemCard(props: Props) {
 
     const countryISO = useAppSelector((state) => state.countryISO.value);
     const currencySymbol = CurrencySymbolDictionary[countryISO]!;
 
-    const itemPrices = props.menuItem.itemVariants.sort((a,b) => a.variant_Name < b.variant_Name ? -1 : 0).map((itemVariant) => {
+    const itemPrices = props.menuItem.itemVariants.sort(sortFunction).map((itemVariant) => {
         return <Form.Group style={priceFormGroup} className="mb-2" key={`${itemVariant.id}-${itemVariant.menuItem_Id}`} >
             <Form.Label style={priceLabelStyle}>{itemVariant.variant_Name}</Form.Label>
             <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />

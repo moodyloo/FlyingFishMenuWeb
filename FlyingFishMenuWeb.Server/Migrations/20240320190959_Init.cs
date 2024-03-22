@@ -1,29 +1,16 @@
-﻿using FlyingFish.server.Model;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace FlyingFishMenuWeb.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTables : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "ItemCategories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Category_Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ItemCategories", x => x.Id);
-                });
-
+           
             migrationBuilder.CreateTable(
                 name: "MenuItems",
                 columns: table => new
@@ -31,6 +18,7 @@ namespace FlyingFishMenuWeb.Server.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsPopular = table.Column<bool>(type: "bit", nullable: true),
                     Category_Id = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -71,33 +59,11 @@ namespace FlyingFishMenuWeb.Server.Migrations
                 name: "IX_MenuItemVariants_MenuItem_Id",
                 table: "MenuItemVariants",
                 column: "MenuItem_Id");
-
-            migrationBuilder.InsertData(
-                table: "ItemCategories",
-                columns: new[] { nameof(ItemCategory.Id), nameof(ItemCategory.Category_Name) },
-                values: new object[,] {
-                    {1,"fishandchips"},
-                    {2, "setmeals"},
-                    {3, "tapas"},
-                    {4, "drinks"},
-                    {5, "sauces" }
-                }
-            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            /**
-            migrationBuilder.DropTable(
-                name: "MenuItemVariants");
-
-            migrationBuilder.DropTable(
-                name: "MenuItems");
-
-            migrationBuilder.DropTable(
-                name: "ItemCategories");
-            */
         }
     }
 }

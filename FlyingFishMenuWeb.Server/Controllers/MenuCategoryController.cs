@@ -26,7 +26,8 @@ namespace FlyingFish.server.Controllers
         {
             try
             {
-                return await _appDbContext.ItemCategories.ToListAsync();
+                var result = await _appDbContext.ItemCategories.ToListAsync();
+                return result;
             }
             catch (Exception ex)
             {

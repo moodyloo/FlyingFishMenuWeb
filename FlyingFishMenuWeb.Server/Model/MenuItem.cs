@@ -8,7 +8,7 @@ namespace FlyingFish.server.Model
         public string? Id { get; set; }
         public string? Name { get; set; }
         public string Description { get; set; }
-
+        public bool? IsPopular { get; set; }
         public ICollection<MenuItemVariant>? ItemVariants { get; set; }
         public int? Category_Id { get; set; }
         public ItemCategory? Category { get; set; }
@@ -19,6 +19,7 @@ namespace FlyingFish.server.Model
         public int? Id { get; set; }
         public string? Category_Name { get; set; }
         public bool? IsSetMeal { get; set; }
+        public string ImageUrl { get; set; }
         [JsonIgnore]
         public ICollection<MenuItem> MenuItems { get; set; }
     }

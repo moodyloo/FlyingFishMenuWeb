@@ -4,7 +4,6 @@ using FlyingFishMenuWeb.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyingFishMenuWeb.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240317135224_Add Tables")]
-    partial class AddTables
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,6 +33,9 @@ namespace FlyingFishMenuWeb.Server.Migrations
                     b.Property<string>("Category_Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool?>("IsSetMeal")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("ItemCategories");
@@ -52,6 +52,9 @@ namespace FlyingFishMenuWeb.Server.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsPopular")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

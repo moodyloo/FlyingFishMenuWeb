@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyingFishMenuWeb.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240318183226_Add Is Set Meal column to ItemCategory")]
-    partial class AddIsSetMealcolumntoItemCategory
+    [Migration("20240320190959_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,9 @@ namespace FlyingFishMenuWeb.Server.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsPopular")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
