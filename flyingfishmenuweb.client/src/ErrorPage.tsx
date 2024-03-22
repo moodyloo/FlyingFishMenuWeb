@@ -13,7 +13,7 @@ function errorMessage(error: unknown): string {
     }
 }
 
-export default function ErrorPage() { 
+export default function ErrorPage() {
     const error = useRouteError();
     console.error(error);
 
