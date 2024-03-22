@@ -1,6 +1,9 @@
 import { Button, Image } from 'react-bootstrap';
 
 import './ImageButton.css';
+
+import './assets';
+
 interface Props {
     imageText: string;
     imageUrl: string;
