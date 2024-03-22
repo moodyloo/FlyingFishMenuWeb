@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Menu from './Menu.tsx';
 import Title from './Title.tsx';
+import ErrorPage from './ErrorPage.tsx';
 import MenuCategorySelection from './MenuCategorySelection.tsx';
+
 import { GetAllMenuItem, GetMenuCategories } from './api/MenuItemAPI.ts';
 
 //BootStrap
@@ -27,7 +29,7 @@ function App() {
     }, []);
 
     const menuCategoryRoutes = menuCategories.map((menuCategory: MenuCategory) => {
-        return <Route path={`/${menuCategory.category_Name}`} element={<Menu menuItems={menuItems.filter(menuItem => menuItem.category_Id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} />} />
+        return <Route errorElement={<ErrorPage />} path={`/${menuCategory.category_Name}`} element={<Menu menuItems={menuItems.filter(menuItem => menuItem.category_Id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} />} />
     });
 
     return (
@@ -36,7 +38,7 @@ function App() {
                 <Title />
             </div>
             <Routes>
-                <Route path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
+                <Route errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
                 {menuCategoryRoutes}
             </Routes>
         </div>
