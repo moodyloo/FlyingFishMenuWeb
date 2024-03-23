@@ -15,10 +15,10 @@ interface Props {
 }
 
 export default function MenuCategorySelection(props: Props) {
-    const menuCategoryTabs = props.menuCategories.map(({ category_Name, imageUrl, id }) => {
+    const menuCategoryTabs = props.menuCategories.map(({ categoryName, imageUrl, id }) => {
         return <Row key={"menuCategory-" + id}>
-            <Link to={`/${category_Name}`}>
-                <ImageButton imageText={category_Name} imageUrl={imageUrl} />
+            <Link to={`/${categoryName}`}>
+                <ImageButton imageText={categoryName} imageUrl={imageUrl} />
             </Link>
         </Row>
     });
@@ -50,5 +50,7 @@ const containerStyle: object = {
     rowGap: "25px",
     flexWrap: 'wrap',
     marginBottom: '20px',
-    overflowY: 'auto'
+    overflowY: 'auto',
+    zIndex: '50',
+    maxWidth: '100%'
 }

@@ -1,9 +1,9 @@
-using FlyingFish.server.Model;
 using FlyingFishMenuWeb.Server;
 using FlyingFishMenuWeb.Server.Data;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using FlyingFishMenuWeb.Server.Model;
 
 namespace FlyingFish.server.Controllers
 {
@@ -13,9 +13,9 @@ namespace FlyingFish.server.Controllers
     public class MenuCategoryController : ControllerBase
     {
         private readonly ILogger<MenuCategoryController> _logger;
-        private readonly AppDbContext _appDbContext;
+        private readonly FlyingFishContext _appDbContext;
 
-        public MenuCategoryController(ILogger<MenuCategoryController> logger, AppDbContext context)
+        public MenuCategoryController(ILogger<MenuCategoryController> logger, FlyingFishContext context)
         {
             _logger = logger;
             _appDbContext = context;

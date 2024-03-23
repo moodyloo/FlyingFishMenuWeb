@@ -8,17 +8,6 @@ import Title from './Title.tsx';
 
 import './Menu.css';
 
-const containerStyle: object = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    columnGap: "50px",
-    rowGap: "25px",
-    flexWrap: 'wrap',
-    marginBottom: '20px',
-    overflowY: 'auto'
-}
-
 interface Props {
     menuItems: MenuItem[];
     searchText: string;
@@ -56,7 +45,7 @@ export default function Menu(props: Props) {
 
     return (
         <>
-            <Title titleName={props.menuItems[0]?.category.category_Name} />
+            <Title titleName={props.menuItems[0]?.category.categoryName} />
             <Form.Control style={searchBarStyle} size="sm" type="text" placeholder="Search dishes" value={props.searchText} onChange={(e) => props.setSearchText(e.target.value)} />
             <Container style={containerStyle} fluid>
                 {menuItemComponents}
@@ -65,4 +54,24 @@ export default function Menu(props: Props) {
     )
 }
 
-const searchBarStyle = { marginBottom: '5px' }
+const searchBarStyle = {
+    marginBottom: '5px',
+    position: 'relative',
+    left: '50%',
+    transform: 'translate(-50%, 0)',
+    zIndex: '50',
+    width: '45%'
+} as const
+
+const containerStyle: object = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    columnGap: "50px",
+    rowGap: "25px",
+    flexWrap: 'wrap',
+    marginBottom: '20px',
+    overflowY: 'auto',
+    zIndex: '50',
+    maxWidth: '100%'
+}

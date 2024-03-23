@@ -39,8 +39,8 @@ const priceLabelStyle = {
 //sort by price also
 const sortFunction = (a: ItemVariant, b: ItemVariant): number => {
     const regex = new RegExp("VEGETARIAN|VEG|VEGETABLE");
-    let aValue = a.variant_Name.toUpperCase().match(regex) == null ? 1 : 0;
-    let bValue = b.variant_Name.toUpperCase().match(regex) == null ? 1 : 0;
+    let aValue = a.variantName.toUpperCase().match(regex) == null ? 1 : 0;
+    let bValue = b.variantName.toUpperCase().match(regex) == null ? 1 : 0;
 
     //further sort by price, cheapest to more expensive
     if (aValue == bValue) {
@@ -55,9 +55,9 @@ export default function MenuItemCard(props: Props) {
     const countryISO = useAppSelector((state) => state.countryISO.value);
     const currencySymbol = CurrencySymbolDictionary[countryISO]!;
 
-    const itemPrices = props.menuItem.itemVariants.sort(sortFunction).map((itemVariant) => {
-        return <Form.Group style={priceFormGroup} className="mb-2" key={`${itemVariant.id}-${itemVariant.menuItem_Id}`} >
-            <Form.Label style={priceLabelStyle}>{itemVariant.variant_Name}</Form.Label>
+    const itemPrices = props.menuItem.menuItemVariants.sort(sortFunction).map((itemVariant) => {
+        return <Form.Group style={priceFormGroup} className="mb-2" key={`${itemVariant.id}-${itemVariant.menuItemId}`} >
+            <Form.Label style={priceLabelStyle}>{itemVariant.variantName}</Form.Label>
             <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />
         </Form.Group>;
     });

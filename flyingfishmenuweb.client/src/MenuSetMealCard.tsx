@@ -43,9 +43,9 @@ export default function MenuSetMealCard(props: Props) {
         return <ListGroup.Item disabled key={props.menuItem.id+"-"+i}>{item}</ListGroup.Item>
     });
 
-    const setMenuPrices = props.menuItem.itemVariants.map((itemVariant) => {
-        return <Form.Group style={priceFormGroup} className="mb-3" key={`${itemVariant.id}-${itemVariant.menuItem_Id}`} >
-            <Form.Label style={priceLabelStyle}>{itemVariant.variant_Name}</Form.Label>
+    const setMenuPrices = props.menuItem.menuItemVariants.map((itemVariant) => {
+        return <Form.Group style={priceFormGroup} className="mb-3" key={`${itemVariant.id}-${itemVariant.menuItemId}`} >
+            <Form.Label style={priceLabelStyle}>{itemVariant.variantName}</Form.Label>
             <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />
         </Form.Group>;
     });
@@ -61,7 +61,7 @@ export default function MenuSetMealCard(props: Props) {
                     </ListGroup>
                 </Card.Body>
                 <Card.Body style={cardPriceBodyStyle}>
-                    {props.menuItem.itemVariants.length > 1 ? <Card.Text style={{ textAlign: 'left' }} ><b>Sizes:</b></Card.Text> : null}
+                    {props.menuItem.menuItemVariants.length > 1 ? <Card.Text style={{ textAlign: 'left' }} ><b>Sizes:</b></Card.Text> : null}
                     <Form>
                         {setMenuPrices}
                     </Form>
