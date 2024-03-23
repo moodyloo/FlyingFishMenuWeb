@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import './App.css'
 import Menu from './Menu.tsx';
 import ErrorPage from './ErrorPage.tsx';
@@ -18,30 +18,34 @@ export default function App() {
     const [menuItems, setMenuItems] = useState<MenuItem[]|[]>([]);
     const [menuCategories, setMenuCategories] = useState<MenuCategory[]|[]>([]);
     const [searchText, setSearchText] = useState<string>("");
-    const [error,setError] = useState<boolean>(false);
     const location = useLocation();
 
-    const callApi = async () => {
+    const retryApiCall = useCallback(async (retries: number) => {
+        if (retries <= 0) {
+            console.log("API Call Error");
+            return;
+        }
+
+        console.log("calling api...");
+
         let menuCategoriesData: MenuCategory[] | [] = [];
         let menuItemsData: MenuItem[] | [] = [];
-        for (let i: number = 0; i < 3; i++) {
-            console.log("calling API");
-            menuCategoriesData = await getMenuCategories();
-            menuItemsData = await getAllMenuItem();
 
-            if (menuCategoriesData.length != 0 && menuItemsData.length != 0) break; 
+        menuCategoriesData = await getMenuCategories();
+        menuItemsData = await getAllMenuItem();
+
+        if (menuCategoriesData.length == 0 || menuItemsData.length == 0) {
+            retryApiCall(retries - 1);
+            return;
         }
 
-        if (menuItems.length == 0 || menuCategories.length == 0) {
-            setError(true);
-        }
         setMenuCategories(menuCategoriesData);
         setMenuItems(menuItemsData);
-    }
+    }, []);
 
     useEffect(() => {
-        callApi();
-    }, []);
+        retryApiCall(3);
+    },[retryApiCall]);
 
     useEffect(() => {
         setSearchText("");
@@ -53,13 +57,13 @@ export default function App() {
 
     return (
         <>
-            {!error ? <div id="rootlight">
+            <div id="rootlight">
                 <div style={backgroundStyle} />
                 <Routes>
                     <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
                     {menuCategoryRoutes}
                 </Routes>
-            </div>: <ErrorPage/>}
+            </div>
         </>
     )
 }
