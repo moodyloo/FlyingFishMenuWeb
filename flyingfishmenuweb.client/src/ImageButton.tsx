@@ -2,15 +2,14 @@ import { Button, Image } from 'react-bootstrap';
 
 import './ImageButton.css';
 
+import { getImageUrl } from './provider/ImageProvider.ts';
+
 interface Props {
     imageText: string;
     imageUrl: string;
 }
 
 export default function ImageButton(props: Props) {
-    function getImageUrl(name: string) {
-        return new URL(`./assets/${name}`, import.meta.url).href
-    }
 
     return (
         <>

@@ -1,10 +1,9 @@
-using FlyingFish.server.Model;
 using FlyingFishMenuWeb.Server;
-using FlyingFishMenuWeb.Server.Data;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using FlyingFishMenuWeb.Server.Model;
+using FlyingFishMenuWeb.Server.Data;
 
 namespace FlyingFish.server.Controllers
 {
@@ -14,9 +13,9 @@ namespace FlyingFish.server.Controllers
     public class MenuItemController : ControllerBase
     {
         private readonly ILogger<MenuItemController> _logger;
-        private readonly AppDbContext _appDbContext;
+        private readonly FlyingFishContext _appDbContext;
 
-        public MenuItemController(ILogger<MenuItemController> logger, AppDbContext context)
+        public MenuItemController(ILogger<MenuItemController> logger, FlyingFishContext context)
         {
             _logger = logger;
             _appDbContext = context;
@@ -28,7 +27,7 @@ namespace FlyingFish.server.Controllers
             try
             {
                 var result = await _appDbContext.MenuItems
-                    .Include(e => e.ItemVariants)
+                    .Include(e => e.MenuItemVariants)
                     .Include(e => e.Category)
                     .ToListAsync();
 
@@ -37,7 +36,7 @@ namespace FlyingFish.server.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return null;
+                return new MenuItem[0];
             }
         }
     }

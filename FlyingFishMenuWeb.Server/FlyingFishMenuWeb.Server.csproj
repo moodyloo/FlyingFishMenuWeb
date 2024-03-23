@@ -7,12 +7,19 @@
     <SpaRoot>..\flyingfishmenuweb.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
+    <ApplicationInsightsResourceId>/subscriptions/c07ecc7f-d3c0-4f84-bab9-a940de7d4551/resourceGroups/FlyingFishWebMenu/providers/microsoft.insights/components/flyingfishmenuapi</ApplicationInsightsResourceId>
+    <UserSecretsId>dd34376c-fe58-4adb-9603-3439aec287e6</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\AppDbContext.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.3.1" />
     <PackageReference Include="Azure.Identity" Version="1.10.4" />
     <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.6.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>

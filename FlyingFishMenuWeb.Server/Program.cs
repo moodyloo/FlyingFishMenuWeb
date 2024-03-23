@@ -26,7 +26,7 @@ builder.Configuration.AddAzureKeyVault(
     new ClientSecretCredential(tenantId, clientId, clientSecret));
 
 //Add Db Context
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<FlyingFishContext>(options =>
                    options.UseSqlServer(builder.Configuration["FlyingFishDatabaseConnection"])
                    , optionsLifetime: ServiceLifetime.Scoped);
 
@@ -52,6 +52,10 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
         }
     );
+});
+builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions
+{
+    ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]
 });
 
 var app = builder.Build();

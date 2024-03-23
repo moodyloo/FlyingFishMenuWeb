@@ -1,6 +1,6 @@
 export interface MenuCategory {
     id: number;
-    category_Name: string;
+    categoryName: string;
     isSetMeal: boolean;
     imageUrl: string;
 }
@@ -9,14 +9,13 @@ export interface MenuItem {
     name: string,
     description: string,
     isPopular: boolean,
-    itemVariants: ItemVariant[],
-    category_Id: number
+    menuItemVariants: ItemVariant[],
     category: MenuCategory
 }
 
 export interface ItemVariant {
     id: string,
-    variant_Name: string,
+    variantName: string,
     price: number,
-    menuItem_Id: string
+    menuItemId: string
 }
