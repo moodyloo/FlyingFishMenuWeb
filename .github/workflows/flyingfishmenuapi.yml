@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App flyingfishmenuapi
+name: ASP .Net Core Backend flyingfishmenuapi
 on:
   workflow_dispatch:
   push:
