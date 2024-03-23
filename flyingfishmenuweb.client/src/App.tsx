@@ -15,15 +15,15 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 
 export default function App() {
-    const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-    const [menuCategories, setMenuCategories] = useState<MenuCategory[]>([]);
+    const [menuItems, setMenuItems] = useState<MenuItem[]|[]>([]);
+    const [menuCategories, setMenuCategories] = useState<MenuCategory[]|[]>([]);
     const [searchText, setSearchText] = useState<string>("");
     const [error,setError] = useState<boolean>(false);
     const location = useLocation();
 
     const callApi = async () => {
-        let menuCategoriesData: MenuCategory[] | [];
-        let menuItemsData: MenuItem[] | [];
+        let menuCategoriesData: MenuCategory[] | [] = [];
+        let menuItemsData: MenuItem[] | [] = [];
         for (let i: number = 0; i < 3; i++) {
             console.log("calling API");
             menuCategoriesData = await getMenuCategories();
@@ -35,8 +35,8 @@ export default function App() {
         if (menuItems.length == 0 || menuCategories.length == 0) {
             setError(true);
         }
-        setMenuCategories(menuCategoriesPromise);
-        setMenuItems(menuItemsPromise);
+        setMenuCategories(menuCategoriesData);
+        setMenuItems(menuItemsData);
     }
 
     useEffect(() => {
