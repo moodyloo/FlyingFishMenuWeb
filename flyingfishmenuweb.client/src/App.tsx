@@ -18,14 +18,23 @@ export default function App() {
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const [menuCategories, setMenuCategories] = useState<MenuCategory[]>([]);
     const [searchText, setSearchText] = useState<string>("");
-
+    const [error,setError] = useState<boolean>(false);
     const location = useLocation();
 
     const callApi = async () => {
-        console.log("calling API");
-        const menuCategoriesPromise: MenuCategory[] | [] = await getMenuCategories();
-        const menuItemsPromise: MenuItem[] | [] = await getAllMenuItem();
+        let menuCategoriesData: MenuCategory[] | [];
+        let menuItemsData: MenuItem[] | [];
+        for (let i: number = 0; i < 3; i++) {
+            console.log("calling API");
+            menuCategoriesData = await getMenuCategories();
+            menuItemsData = await getAllMenuItem();
 
+            if (menuCategoriesData.length != 0 && menuItemsData.length != 0) break; 
+        }
+
+        if (menuItems.length == 0 || menuCategories.length == 0) {
+            setError(true);
+        }
         setMenuCategories(menuCategoriesPromise);
         setMenuItems(menuItemsPromise);
     }
@@ -33,12 +42,6 @@ export default function App() {
     useEffect(() => {
         callApi();
     }, []);
-
-    useEffect(() => {
-        setTimeout(() => {
-            if (menuItems.length == 0) callApi();
-        }, 4000);
-    }, [menuItems]);
 
     useEffect(() => {
         setSearchText("");
@@ -49,13 +52,15 @@ export default function App() {
     });
 
     return (
-        <div id="rootlight">
-            <div style={backgroundStyle} />
-            <Routes>
-                <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
-                {menuCategoryRoutes}
-            </Routes>
-        </div>
+        <>
+            {!error ? <div id="rootlight">
+                <div style={backgroundStyle} />
+                <Routes>
+                    <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
+                    {menuCategoryRoutes}
+                </Routes>
+            </div>: <ErrorPage/>}
+        </>
     )
 }
 
