@@ -44,7 +44,7 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        retryApiCall(3);
+        retryApiCall(10);
     },[retryApiCall]);
 
     useEffect(() => {
