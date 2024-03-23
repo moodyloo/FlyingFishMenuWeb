@@ -5,7 +5,7 @@ import { url } from '../Consts.ts';
 export async function getAllMenuItem() : Promise<MenuItem[]|[]> {
     try
     {
-        const response = await axios.get<MenuItem[]>(url + '/api/MenuItem/GetMenuItems', { timeout: 3000 });
+        const response = await axios.get<MenuItem[]>(url + '/api/MenuItem/GetMenuItems', { timeout: 7000 });
         return response.data;
     }
     catch (error) {
@@ -16,7 +16,7 @@ export async function getAllMenuItem() : Promise<MenuItem[]|[]> {
 
 export async function getMenuCategories(): Promise<MenuCategory[] | []> {
     try {
-        const response = await axios.get<MenuCategory[]>(url + '/api/MenuCategory/GetMenuCategories', { timeout: 3000 });
+        const response = await axios.get<MenuCategory[]>(url + '/api/MenuCategory/GetMenuCategories', { timeout: 7000 });
         return response.data;
     }
     catch (error) {

@@ -22,7 +22,7 @@ export default function App() {
     const location = useLocation();
 
     const callApi = async () => {
-        console.log("a");
+        console.log("calling API");
         const menuCategoriesPromise: MenuCategory[] | [] = await getMenuCategories();
         const menuItemsPromise: MenuItem[] | [] = await getAllMenuItem();
 
@@ -36,9 +36,9 @@ export default function App() {
 
     useEffect(() => {
         setTimeout(() => {
-            if (menuCategories.length == 0 && menuItems.length == 0) callApi();
+            if (menuItems.length == 0) callApi();
         }, 4000);
-    }, [menuCategories,menuItems]);
+    }, [menuItems]);
 
     useEffect(() => {
         setSearchText("");
