@@ -9,22 +9,46 @@
     <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
     <ApplicationInsightsResourceId>/subscriptions/c07ecc7f-d3c0-4f84-bab9-a940de7d4551/resourceGroups/FlyingFishWebMenu/providers/microsoft.insights/components/flyingfishmenuapi</ApplicationInsightsResourceId>
     <UserSecretsId>dd34376c-fe58-4adb-9603-3439aec287e6</UserSecretsId>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Compile Remove="sqliteDB\**" />
+    <Content Remove="Migrations\**" />
+    <Content Remove="sqliteDB\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="sqliteDB\**" />
+    <None Remove="Migrations\**" />
+    <None Remove="sqliteDB\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Data\AppDbContext.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="flyingfishsqlite.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="flyingfishsqlite.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.3.1" />
     <PackageReference Include="Azure.Identity" Version="1.10.4" />
     <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.6.0" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -32,16 +56,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="8.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Uno.UI" Version="5.1.87" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\flyingfishmenuweb.client\flyingfishmenuweb.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

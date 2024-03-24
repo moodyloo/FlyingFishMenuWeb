@@ -6,3 +6,7 @@ export const CurrencySymbolDictionary: { [iso: string]: string; } = {
 };
 
 export const companyName: string = "The Flying Fish";
+
+export const contactUs: string = "Contact us"
+export const about: string = "About";
+export const foodAllergies: string = "FoodAllergies";

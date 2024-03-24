@@ -1,50 +1,42 @@
-//Image
-import backIcon from './assets/back.png';
 
-import { Image } from 'react-bootstrap';
+import { Navbar,Container, Nav } from 'react-bootstrap';
 
-import { companyName } from './Consts.ts';
 import { Link } from 'react-router-dom';
+
+import { contactUs,about } from './Consts.ts';
 
 interface Props {
     titleName: string;
 }
 export default function Title(props: Props) {
     return (
-        <div style={titleStyle}>
-            <div style={titleAndBackButtonStyle}>
-                {props.titleName != companyName ? <Link to="/">
-                    <button style={backButtonStyle}>
-                        <Image src={backIcon} style={backStyle} />
-                    </button>
-                </Link> : null}
-                <h1 style={shopNameStyle}>{props.titleName}</h1>
-            </div>
-        </div>
+        <>
+            <Navbar collapseOnSelect expand="lg" style={titleStyle}>
+                <Container>
+                    <Navbar.Brand style={titleNameStyle}>{props.titleName}</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="me-auto" style={navStyle}>
+                            <Nav.Link as={Link} to="/">Main Menu</Nav.Link>
+                            <Nav.Link as={Link} to={contactUs}>Contact Us</Nav.Link>
+                            <Nav.Link as={Link} to={about}>About</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </>
     )
 }
-
-const backButtonStyle = {
-    width: '50px',
-    height: '50px',
-    left: '0',
-    top: '10%',
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    borderColor: 'transparent'
-} as const
-
-const titleAndBackButtonStyle = {
-    display: 'inline-block',
-    position: 'relative'
-} as const
-
-const titleStyle = {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    marginBottom: '5px',
-    backgroundColor: '#76b1ff'
+const navStyle = {
+    marginLeft: '20px'
 }
 
-const shopNameStyle = { color: 'white' }
-const backStyle = { height: '25px' }
+const titleStyle = {
+    backgroundColor: '#76b1ff',
+    marginBottom: '10px'
+}
+
+const titleNameStyle = {
+    fontSize: '35px',
+    fontFamily: 'cursive'
+}

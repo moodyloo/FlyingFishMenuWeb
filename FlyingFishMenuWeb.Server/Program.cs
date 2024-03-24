@@ -1,11 +1,12 @@
 using FlyingFishMenuWeb.Server;
-using Azure.Identity;
 using FlyingFishMenuWeb.Server.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging.AzureAppServices;
+using Microsoft.Data.Sqlite;
+using Windows.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
+/**
 var clientId = builder.Configuration["AzureAD:ClientId"];
 var clientSecret = builder.Configuration["AzureAD:ClientSecret"];
 var tenantId = builder.Configuration["AzureAD:TenantId"];
@@ -20,14 +21,19 @@ if (builder.Environment.IsProduction())
     builder.Services.Configure<AzureFileLoggerOptions>(builder.Configuration.GetSection("AzureLogging"));
 }
 
-
 builder.Configuration.AddAzureKeyVault(
     new Uri($"https://{builder.Configuration["AzureAD:KeyVaultName"]}.vault.azure.net/"),
     new ClientSecretCredential(tenantId, clientId, clientSecret));
 
+*/
+
+SqliteConnectionStringBuilder sqliteConnectionString = new SqliteConnectionStringBuilder();
+sqliteConnectionString.DataSource = $"{Directory.GetCurrentDirectory()}\\flyingfishsqlite.db";
+sqliteConnectionString.DefaultTimeout = 5000;
+
 //Add Db Context
 builder.Services.AddDbContext<FlyingFishContext>(options =>
-                   options.UseSqlServer(builder.Configuration["FlyingFishDatabaseConnection"])
+                   options.UseSqlite(sqliteConnectionString.ConnectionString)//builder.Configuration["FlyingFishDatabaseConnection"])
                    , optionsLifetime: ServiceLifetime.Scoped);
 
 builder.Services.AddControllers();
