@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { MenuCategory } from './model/MenuModel.ts';
-import { companyName } from './Consts.ts';
+import { companyName } from './consts.ts';
 
 import { Container, Row, Spinner } from 'react-bootstrap';
 

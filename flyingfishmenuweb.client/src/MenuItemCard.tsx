@@ -1,7 +1,7 @@
 import { ItemVariant, MenuItem } from "./model/MenuModel.ts";
 import { Card, ListGroup, Form } from 'react-bootstrap';
 import { useAppSelector } from './app/hooks.ts'
-import { CurrencySymbolDictionary } from './Consts.ts';
+import { CurrencySymbolDictionary } from './consts.ts';
 
 interface Props {
     menuItem: MenuItem;

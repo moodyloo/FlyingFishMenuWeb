@@ -1,11 +1,15 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import './App.css'
 import Menu from './Menu.tsx';
 import ErrorPage from './ErrorPage.tsx';
 import MenuCategorySelection from './MenuCategorySelection.tsx';
+import Location from './Location.tsx';
+import About from './About.tsx';
 
 import { getAllMenuItem, getMenuCategories } from './api/MenuItemAPI.ts';
+import { getGoogleMapApiKey } from './api/MapAPI.ts';
 import { getImageUrl } from './provider/ImageProvider.ts';
+import { contactUs,about } from './consts.ts';
 
 //BootStrap
 import { MenuCategory, MenuItem } from './model/MenuModel.ts';
@@ -18,7 +22,10 @@ export default function App() {
     const [menuItems, setMenuItems] = useState<MenuItem[]|[]>([]);
     const [menuCategories, setMenuCategories] = useState<MenuCategory[]|[]>([]);
     const [searchText, setSearchText] = useState<string>("");
+    const [googleMapsApiKey, setGoogleMapsApiKey] = useState<string>("");
     const location = useLocation();
+
+    const mapApiKey = useMemo(() => googleMapsApiKey, [googleMapsApiKey]);
 
     const retryApiCall = useCallback(async (retries: number) => {
         if (retries <= 0) {
@@ -44,6 +51,10 @@ export default function App() {
     }, []);
 
     useEffect(() => {
+        getGoogleMapApiKey().then((key) => setGoogleMapsApiKey(key));
+    }, [])
+
+    useEffect(() => {
         retryApiCall(10);
     },[retryApiCall]);
 
@@ -61,6 +72,8 @@ export default function App() {
                 <div style={backgroundStyle} />
                 <Routes>
                     <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
+                    {googleMapsApiKey != "" ? < Route key={'location/'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Location mapApiKey={mapApiKey} />} /> : null}
+                    <Route key={'about/'} errorElement={<ErrorPage />} path={`/${about}`} element={<About />} />
                     {menuCategoryRoutes}
                 </Routes>
             </div>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { MenuCategory, MenuItem } from '../model/MenuModel.ts';
-import { url } from '../Consts.ts';
+import { url } from '../consts.ts';
 
 export async function getAllMenuItem() : Promise<MenuItem[]|[]> {
     try
