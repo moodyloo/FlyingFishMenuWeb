@@ -82,7 +82,7 @@ export default function App() {
 }
 
 const backgroundStyle = {
-    backgroundImage: `url(${getImageUrl("background.jpg")})`,
+    backgroundImage: `url(${getImageUrl("background.webp")})`,
     backdropFilter: 'blur(10px)',
     position: 'fixed',
     width: '100%',

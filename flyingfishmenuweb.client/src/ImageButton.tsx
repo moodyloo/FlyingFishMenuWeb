@@ -15,7 +15,7 @@ export default function ImageButton(props: Props) {
         <>
             <Button style={buttonStyle}>
                 <h2 style={textStyle}>{props.imageText}</h2>
-                <Image rounded style={imgStyle} src={getImageUrl(props.imageUrl)}></Image>
+                <Image rounded style={imgStyle} src={getImageUrl(props.imageUrl)} alt={props.imageText}></Image>
             </Button>
         </>
     );
