@@ -6,8 +6,8 @@ import Title from './Title.tsx';
 
 import { contactUs } from './consts.ts';
 
-import locationIcon from './assets/location.png';
-import phoneIcon from './assets/phone.png';
+import locationIcon from './assets/location.webp';
+import phoneIcon from './assets/phone.webp';
 
 const center = {
     lat: 51.283135, 
@@ -55,10 +55,10 @@ const Location = memo(function Location(props: Props) {
                     <Card.Body>
                         <Card.Title>Contact Details</Card.Title>
                         <Card.Text>
-                            <Image style={iconStyle} src={locationIcon} /> 92 Fleet Road, Fleet GU51 4PA
+                            <Image style={iconStyle} src={locationIcon} alt="Location Icon" /> 92 Fleet Road, Fleet GU51 4PA
                         </Card.Text>
                         <Card.Text>
-                            <Image style={iconStyle} src={phoneIcon} /> 01252 444 747
+                            <Image style={iconStyle} src={phoneIcon} alt="Phone Icon" /> 01252 444 747
                         </Card.Text>
                     </Card.Body>
                 </Card>
