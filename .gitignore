@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 # Config files
 appsettings.Development.json
+/flyingfishmenuweb.client/public/robots.txt
+/flyingfishmenuweb.client/public/sitemap.xml
