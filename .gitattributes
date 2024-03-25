@@ -61,3 +61,9 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+###############################################################################
+# Do not merge changes for files such as robots.txt and sitemap.xml
+###############################################################################
+#robots.txt merge=ours
+#sitemap.xml merge=ours
