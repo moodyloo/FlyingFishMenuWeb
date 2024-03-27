@@ -10,6 +10,7 @@
     <ApplicationInsightsResourceId>/subscriptions/c07ecc7f-d3c0-4f84-bab9-a940de7d4551/resourceGroups/FlyingFishWebMenu/providers/microsoft.insights/components/flyingfishmenuapi</ApplicationInsightsResourceId>
     <UserSecretsId>dd34376c-fe58-4adb-9603-3439aec287e6</UserSecretsId>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -55,6 +56,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="8.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Uno.UI" Version="5.1.87" />
   </ItemGroup>
