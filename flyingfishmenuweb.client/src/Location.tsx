@@ -40,18 +40,7 @@ const Location = memo(function Location(props: Props) {
         <>
             <Title titleName={contactUs} />
             <CardGroup style={cardGroupStyle}>
-                <Card style={cardStyle}>
-                    {isLoaded ? (
-                        <GoogleMap
-                            mapContainerStyle={mapContainerStyle}
-                            center={center}
-                            onLoad={onLoad}
-                        >
-                            <MarkerF key={"flyingfishMarker"} position={center} />
-                        </GoogleMap>
-                    ) : null}
-                </Card>
-                <Card style={cardStyle}>
+                <Card style={cardContactDetailsStyle}>
                     <Card.Body>
                         <Card.Title>Contact Details</Card.Title>
                         <Card.Text>
@@ -61,6 +50,17 @@ const Location = memo(function Location(props: Props) {
                             <Image style={iconStyle} src={phoneIcon} alt="Phone Icon" /> 01252 444 747
                         </Card.Text>
                     </Card.Body>
+                </Card>
+                <Card style={cardMapStyle}>
+                    {isLoaded ? (
+                        <GoogleMap
+                            mapContainerStyle={mapContainerStyle}
+                            center={center}
+                            onLoad={onLoad}
+                        >
+                            <MarkerF key={"flyingfishMarker"} position={center} />
+                        </GoogleMap>
+                    ) : null}
                 </Card>
             </CardGroup>
         </>
@@ -75,7 +75,12 @@ const iconStyle = {
     width: '20px'
 }
 
-const cardStyle = {
+const cardContactDetailsStyle = {
+    padding: '5px',
+    width: '100%'
+}
+
+const cardMapStyle = {
     padding: '5px',
     height: '100%',
     width: '100%'
