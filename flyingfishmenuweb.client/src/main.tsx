@@ -2,7 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 
-import url from '../src/consts.ts';
+import { url } from './consts.ts';
 
 //css
 import './index.css'
@@ -22,7 +22,7 @@ import ErrorPage from './ErrorPage.tsx';
 //Add pre connect link to web app
 const preconnectLink = document.createElement('link');
 preconnectLink.rel = 'preconnect';
-preconnectLink.href = url;
+preconnectLink.href = url!;
 document.head.appendChild(preconnectLink);
 
 const root = createRoot(document.getElementById('root')!);
