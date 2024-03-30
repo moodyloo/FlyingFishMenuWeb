@@ -45,6 +45,7 @@ export default function MenuItemCard(props: Props) {
                     <Card.Title>{props.menuItem.name}</Card.Title>
                     {props.menuItem.description != "" ? <Card.Text> {props.menuItem.description}</Card.Text> : null}
                 </Card.Body>
+                <div style={cardFillerStyle} /> 
                 <Card.Body style={cardPriceBodyStyle}>
                     <ListGroup>
                         {itemPrices}
@@ -73,13 +74,20 @@ const cardStyle = {
     padding: '5px'
 }
 
-const cardTitleBodyStyle = {
-    textAlign: 'start' as const
+const cardFillerStyle = {
+    flex: '100'
 }
+
+const cardTitleBodyStyle = {
+    textAlign: 'start',
+    position: 'sticky',
+    top: '0',
+    backgroundColor: 'inherit'
+} as const
 
 const cardPriceBodyStyle = {
     textAlign: 'start' as const,
-    flex: 'none' as const
+    flex: 'none' as const,
 }
 
 const priceFormGroup = {

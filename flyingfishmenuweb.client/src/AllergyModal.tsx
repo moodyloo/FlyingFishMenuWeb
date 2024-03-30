@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react';
 
 export default function AllergyModal() {
 
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        const popup_shown = localStorage.getItem("popup_shown");
+        const popup_shown = sessionStorage.getItem("popup_shown");
         if (popup_shown != "1") {
-            setVisible(true);
-            localStorage.setItem("popup_shown", "1");
+            sessionStorage.setItem("popup_shown", "1");
         }
         else {
             setVisible(false);
