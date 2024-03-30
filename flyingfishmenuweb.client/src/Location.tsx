@@ -3,6 +3,7 @@ import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 import { Card, Image, CardGroup } from 'react-bootstrap';
 
 import Title from './Title.tsx';
+import OpeningTimeTable from './OpeningTimeTable.tsx';
 
 import { contactUs } from './consts.ts';
 
@@ -49,6 +50,7 @@ const Location = memo(function Location(props: Props) {
                         <Card.Text>
                             <Image style={iconStyle} src={phoneIcon} alt="Phone Icon" /> 01252 444 747
                         </Card.Text>
+                        <OpeningTimeTable/>
                     </Card.Body>
                 </Card>
                 <Card style={cardMapStyle}>

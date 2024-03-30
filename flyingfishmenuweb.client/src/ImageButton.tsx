@@ -30,8 +30,8 @@ const textStyle = {
 
 const imgStyle = {
     display: 'block',
-    height: '298px',
-    width: '390px'
+    height: '100%',
+    width: '100%'
 }
 
 const buttonStyle = {
