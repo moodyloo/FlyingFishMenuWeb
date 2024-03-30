@@ -12,12 +12,12 @@ interface OpeningTime {
 
 const openingTimes: OpeningTime[] = [
     { weekday: "Monday", openingPeriod: { morning: "CLOSED", evening: "CLOSED" } },
-    { weekday: "Tuesday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 10:00pm" } },
-    { weekday: "Wednesday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 10:00pm" } },
-    { weekday: "Thursday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 10:00pm" } },
-    { weekday: "Friday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 10:30pm" } },
-    { weekday: "Saturday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 10:30pm" } },
-    { weekday: "Sunday", openingPeriod: { morning: "CLOSED", evening: "5:00pm - 10:00pm" } }
+    { weekday: "Tuesday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 9:00pm" } },
+    { weekday: "Wednesday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 9:00pm" } },
+    { weekday: "Thursday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 9:00pm" } },
+    { weekday: "Friday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 9:00pm" } },
+    { weekday: "Saturday", openingPeriod: { morning: "11:30am - 2:00pm", evening: "5:00pm - 9:00pm" } },
+    { weekday: "Sunday", openingPeriod: { morning: "CLOSED", evening: "5:00pm - 9:00pm" } }
 ]
 export default function OpeningTimeTable() {
 
