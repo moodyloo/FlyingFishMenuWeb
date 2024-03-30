@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: https://green-plant-03ac6fb03.5.azurestaticapps.net/sitemap.xml
+Sitemap: https://flyingfishfleet.co.uk/sitemap.xml
