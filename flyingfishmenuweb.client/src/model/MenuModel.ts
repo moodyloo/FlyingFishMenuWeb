@@ -9,6 +9,7 @@ export interface MenuItem {
     name: string,
     description: string,
     isPopular: boolean,
+    isVegetarian: boolean,
     menuItemVariants: ItemVariant[],
     category: MenuCategory
 }
@@ -17,5 +18,6 @@ export interface ItemVariant {
     id: string,
     variantName: string,
     price: number,
+    isVegetarian: boolean,
     menuItemId: string
 }
