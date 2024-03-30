@@ -24,7 +24,6 @@ export default function App() {
     const [menuCategories, setMenuCategories] = useState<MenuCategory[]|[]>([]);
     const [searchText, setSearchText] = useState<string>("");
     const [googleMapsApiKey, setGoogleMapsApiKey] = useState<string>("");
-    const [showAllergyModal, setShowAllergyModal] = useState<boolean>(true);
     const location = useLocation();
 
     const mapApiKey = useMemo(() => googleMapsApiKey, [googleMapsApiKey]);
@@ -72,7 +71,7 @@ export default function App() {
         <>
             <div id="rootlight">
                 <div style={backgroundStyle} />
-                <AllergyModal showAllergyModal={showAllergyModal} setShowAllergyModal={setShowAllergyModal} />
+                <AllergyModal />
                 <Routes>
                     <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
                     {googleMapsApiKey != "" ? < Route key={'location/'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Location mapApiKey={mapApiKey} />} /> : null}

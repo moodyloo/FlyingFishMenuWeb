@@ -15,6 +15,7 @@ public partial class MenuItemVariant
     public decimal? Price { get; set; }
 
     public string MenuItemId { get; set; }
+    public bool? IsVegetarian { get; set; }
 
     [JsonIgnore]
     public virtual MenuItem MenuItem { get; set; }

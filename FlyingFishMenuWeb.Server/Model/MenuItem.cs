@@ -15,6 +15,7 @@ public partial class MenuItem
     public string Description { get; set; }
 
     public bool? IsPopular { get; set; }
+    public bool? IsVegetarian { get; set; }
 
     [JsonIgnore]
     public int? CategoryId { get; set; }

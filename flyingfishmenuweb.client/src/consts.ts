@@ -1,4 +1,4 @@
-export const url: string | undefined = import.meta.env.MODE ? 'https://flyingfishapi-dev.azurewebsites.net' : 'https://flyingfishmenuapi.azurewebsites.net';
+export const url: string | undefined = import.meta.env.MODE == "development" ? 'https://flyingfishapi-dev.azurewebsites.net' : 'https://flyingfishmenuapi.azurewebsites.net';
 
 //Currency Symbols
 export const CurrencySymbolDictionary: { [iso: string]: string; } = {
