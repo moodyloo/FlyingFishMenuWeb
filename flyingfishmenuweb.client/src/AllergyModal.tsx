@@ -1,9 +1,12 @@
 import { Button, Modal } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
-export default function AllergyModal() {
+interface Props {
+    visible: boolean
+}
+export default function AllergyModal(props: Props) {
 
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(props.visible);
 
     useEffect(() => {
         const popup_shown = sessionStorage.getItem("popup_shown");

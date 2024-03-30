@@ -71,7 +71,7 @@ export default function App() {
         <>
             <div id="rootlight">
                 <div style={backgroundStyle} />
-                <AllergyModal />
+                <AllergyModal visible={sessionStorage.getItem("popup_shown") != "1"} />
                 <Routes>
                     <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
                     {googleMapsApiKey != "" ? < Route key={'location/'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Location mapApiKey={mapApiKey} />} /> : null}
