@@ -6,7 +6,7 @@ export const CurrencySymbolDictionary: { [iso: string]: string; } = {
 };
 
 //google api key
-export const googleApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+export const googleApiKey = "AIzaSyBzShoWzKyaZ-XczdX8j_IOAiPBNY-UiHI";
 
 export const companyName: string = "The Flying Fish";
 
