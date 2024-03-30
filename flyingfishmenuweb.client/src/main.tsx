@@ -22,7 +22,7 @@ import ErrorPage from './ErrorPage.tsx';
 //Add pre connect link to web app
 const preconnectLink = document.createElement('link');
 preconnectLink.rel = 'preconnect';
-preconnectLink.href = url!;
+preconnectLink.href = url == null ? "" : url;
 document.head.appendChild(preconnectLink);
 
 const root = createRoot(document.getElementById('root')!);

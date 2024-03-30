@@ -30,7 +30,7 @@ export default function AllergyModal() {
                 </Modal.Body>
 
                 <Modal.Footer style={modalFooterStyle}>
-                    <Button variant="secondary" onClick={() => props.setShowAllergyModal(false)}>Close</Button>
+                    <Button variant="secondary" onClick={() => setVisible(false)}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>
