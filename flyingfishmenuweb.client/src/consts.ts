@@ -1,9 +1,12 @@
-export const url: string | undefined = import.meta.env.DEV ? 'http://localhost:5055' : 'https://flyingfishmenuapi.azurewebsites.net';
+export const url: string | undefined = import.meta.env.MODE == "development" ? 'https://flyingfishapi-dev.azurewebsites.net' : 'https://flyingfishmenuapi.azurewebsites.net';
 
 //Currency Symbols
 export const CurrencySymbolDictionary: { [iso: string]: string; } = {
     "GBR": "\u00A3"
 };
+
+//google api key
+export const googleApiKey = "AIzaSyBzShoWzKyaZ-XczdX8j_IOAiPBNY-UiHI";
 
 export const companyName: string = "The Flying Fish";
 
