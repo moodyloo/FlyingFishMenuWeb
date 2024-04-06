@@ -3,6 +3,8 @@ using FlyingFishMenuWeb.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using Windows.Storage;
+using FlyingFishMenuWeb.Server.Repository;
+using FlyingFishMenuWeb.Server.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,10 +33,15 @@ SqliteConnectionStringBuilder sqliteConnectionString = new SqliteConnectionStrin
 sqliteConnectionString.DataSource = $"{Directory.GetCurrentDirectory()}\\flyingfishsqlite.db";
 sqliteConnectionString.DefaultTimeout = 5000;
 
-//Add Db Context
+//Dependency Injections
 builder.Services.AddDbContext<FlyingFishContext>(options =>
                    options.UseSqlite(sqliteConnectionString.ConnectionString)//builder.Configuration["FlyingFishDatabaseConnection"])
                    , optionsLifetime: ServiceLifetime.Scoped);
+
+builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
+builder.Services.AddScoped<IMenuItemService,MenuItemService>();
+builder.Services.AddScoped<IMenuCategoryRepository, MenuCategoryRepository>();
+builder.Services.AddScoped<IMenuCategoryService, MenuCategoryService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -43,7 +50,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Title = "Minimal API",
+        Title = "FlyingFish API",
         Version = "v1"
     });
 });

@@ -50,6 +50,9 @@ const Location = memo(function Location(props: Props) {
                         <Card.Text>
                             <Image style={iconStyle} src={phoneIcon} alt="Phone Icon" /> 01252 444 747
                         </Card.Text>
+                        <Card.Text>
+                            We only take collection orders at the moment, sorry for any inconvenience
+                        </Card.Text>
                         <OpeningTimeTable/>
                     </Card.Body>
                 </Card>

@@ -3,7 +3,7 @@ import { Navbar,Container, Nav } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
 
-import { contactUs,about } from './consts.ts';
+import { contactUs,about, basket } from './consts.ts';
 
 interface Props {
     titleName: string;
@@ -20,6 +20,7 @@ export default function Title(props: Props) {
                             <Nav.Link as={Link} to="/">Main Menu</Nav.Link>
                             <Nav.Link as={Link} to={`/${contactUs}`}>Contact Us</Nav.Link>
                             <Nav.Link as={Link} to={`/${about}`}>About</Nav.Link>
+                            <Nav.Link as={Link} to={`/${basket}`}>Basket</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store.ts'
 
 // Define a type for the slice state
 interface CountryISO {
@@ -21,5 +20,5 @@ export const countryISOSlice = createSlice({
   },
 })
 
-export const setCountryISO = (state: RootState) => state.countryISO.value
+export const { setCountryISO } = countryISOSlice.actions;
 export default countryISOSlice.reducer

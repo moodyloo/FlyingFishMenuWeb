@@ -1,9 +1,12 @@
 using FlyingFishMenuWeb.Server;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using FlyingFishMenuWeb.Server.Model;
-using FlyingFishMenuWeb.Server.Data;
+using FlyingFishMenuWeb.Server.Service;
+
+using HttpResponseMessage = System.Net.Http.HttpResponseMessage;
+using HttpStatusCode = System.Net.HttpStatusCode;
+using HttpResponseException = System.Web.Http.HttpResponseException;
 
 namespace FlyingFish.server.Controllers
 {
@@ -13,30 +16,33 @@ namespace FlyingFish.server.Controllers
     public class MenuItemController : ControllerBase
     {
         private readonly ILogger<MenuItemController> _logger;
-        private readonly FlyingFishContext _appDbContext;
+        private readonly IMenuItemService _menuItemService;
 
-        public MenuItemController(ILogger<MenuItemController> logger, FlyingFishContext context)
+        public MenuItemController(ILogger<MenuItemController> logger, IMenuItemService menuItemService)
         {
             _logger = logger;
-            _appDbContext = context;
+            _menuItemService = menuItemService;
         }
 
         [HttpGet("GetMenuItems")]
-        public async Task<IEnumerable<MenuItem>> GetMenuItems()
+        public async Task<ActionResult<IEnumerable<MenuItem>>> GetMenuItems()
         {
             try
             {
-                var result = await _appDbContext.MenuItems
-                    .Include(e => e.MenuItemVariants)
-                    .Include(e => e.Category)
-                    .ToListAsync();
+                var result = await _menuItemService.GetMenuItemsOrderByIsVegetarianAndPrice();
+                if (result.Count() == 0) return NoContent();
 
-                return result;
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                return new MenuItem[0];
+                _logger.LogError(ex.ToString());
+                var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    Content = new StringContent(string.Format(ex.ToString())),
+                    ReasonPhrase = "Exception in backend"
+                };
+                throw new HttpResponseException(response);
             }
         }
     }

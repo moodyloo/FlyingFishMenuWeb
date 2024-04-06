@@ -6,17 +6,17 @@ import MenuCategorySelection from './MenuCategorySelection.tsx';
 import Location from './Location.tsx';
 import About from './About.tsx';
 import AllergyModal from './AllergyModal.tsx';
+import ShoppingBasket from './ShoppingBasket.tsx';
 
 import { getAllMenuItem, getMenuCategories } from './api/MenuItemAPI.ts';
 import { getImageUrl } from './provider/ImageProvider.ts';
-import { contactUs, about, googleApiKey } from './consts.ts';
+import { contactUs, about, basket, googleApiKey } from './consts.ts';
 
 //BootStrap
 import { MenuCategory, MenuItem } from './model/MenuModel.ts';
 
 //React-router-dom
 import { Route, Routes, useLocation } from 'react-router-dom';
-
 
 
 
@@ -52,7 +52,7 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        retryApiCall(10);
+        retryApiCall(3);
     },[retryApiCall]);
 
     useEffect(() => {
@@ -60,7 +60,7 @@ export default function App() {
     },[location]);
 
     const menuCategoryRoutes = menuCategories.map((menuCategory: MenuCategory) => {
-        return <Route key={"route/"+menuCategory.id} errorElement={<ErrorPage />} path={`/${menuCategory.categoryName}`} element={<Menu menuItems={menuItems.filter(menuItem => menuItem.category.id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} />} />
+        return <Route key={"route/" + menuCategory.id} errorElement={<ErrorPage />} path={`/${menuCategory.categoryName}`} element={<Menu menuItems={menuItems.filter(menuItem => menuItem.category.id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} />} />
     });
 
     return (
@@ -72,6 +72,7 @@ export default function App() {
                     <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
                     <Route key={'location/'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Location mapApiKey={mapApiKey} />} />
                     <Route key={'about/'} errorElement={<ErrorPage />} path={`/${about}`} element={<About />} />
+                    <Route key={'basket/'} errorElement={<ErrorPage />} path={`/${basket}`} element={<ShoppingBasket />} />
                     {menuCategoryRoutes}
                 </Routes>
             </div>

@@ -2,12 +2,14 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace FlyingFishMenuWeb.Server.Model;
 
 public partial class ItemCategory
 {
+    [Key]
     public int Id { get; set; }
 
     public string CategoryName { get; set; }

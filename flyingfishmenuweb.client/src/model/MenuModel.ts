@@ -1,3 +1,8 @@
+export interface ShoppingBasketContent {
+    itemVariant: ItemVariant;
+    qty: number;
+    menuItem: MenuItem;
+}
 export interface MenuCategory {
     id: number;
     categoryName: string;
@@ -19,5 +24,6 @@ export interface ItemVariant {
     variantName: string,
     price: number,
     isVegetarian: boolean,
-    menuItemId: string
+    menuItemId: string,
+    menuItem: MenuItem
 }

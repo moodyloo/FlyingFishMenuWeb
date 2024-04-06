@@ -14,20 +14,6 @@ interface Props {
     setSearchText: (searchText: string) => void;
 }
 
-//Sort menu items in order of their numerical Id value
-const sortFunction = (a: MenuItem, b: MenuItem): number => {
-    const regex = new RegExp("([a-z]|[A-Z]|[-])+");
-    const aNumeric: number = a.id.replace(regex, "") == "" ? -1 : parseInt(a.id.replace(regex, ""));
-    const bNumeric: number = b.id.replace(regex, "") == "" ? -1 : parseInt(b.id.replace(regex, ""));
-
-    if (aNumeric < bNumeric) {
-        return -1;
-    }
-    else {
-        return 1;
-    }
-}
-
 export default function Menu(props: Props) {
 
     //Filter menu items based on search term
@@ -36,7 +22,7 @@ export default function Menu(props: Props) {
         return textToBeSearched.indexOf(props.searchText.toUpperCase()) != -1
     }
 
-    const menuItemComponents = props.menuItems.filter(menuItem => filterFunction(menuItem)).sort((a, b) => sortFunction(a, b)).map((item) => {
+    const menuItemComponents = props.menuItems.filter(menuItem => filterFunction(menuItem)).map((item) => {
 
         return <Row className="menuItemRow" key={"menu" + item.id}>
                 {item.category.isSetMeal ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard menuItem={item} />}

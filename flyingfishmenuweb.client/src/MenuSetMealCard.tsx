@@ -1,53 +1,19 @@
 import { MenuItem } from "./model/MenuModel.ts";
 import { Card, ListGroup, Form } from 'react-bootstrap';
 
-import { useAppSelector } from './app/hooks.ts'
-import { CurrencySymbolDictionary } from './consts.ts';
+import MenuItemPrice from './MenuItemPrice.tsx';
 
 interface Props {
     menuItem: MenuItem;
 }
 
-const cardStyle = {
-    width: '325px'
-}
-
-const cardBodyStyle = {
-    textAlign: 'start' as const
-}
-
-const cardPriceBodyStyle = {
-    flex: 'none' as const
-}
-
-const priceFormGroup = {
-    display: 'flex',
-    alignItems: 'center'
-}
-
-const priceTextBoxStyle = {
-    width: '35%'
-}
-
-const priceLabelStyle = {
-    textAlign: 'start' as const,
-    width: '65%'
-}
-
 export default function MenuSetMealCard(props: Props) {
-
-    const countryISO = useAppSelector((state) => state.countryISO.value);
-    const currencySymbol = CurrencySymbolDictionary[countryISO]!;
-
     const menuSetMealItems = props.menuItem.description.split('|').sort().map((item: string, i: number) => {
         return <ListGroup.Item disabled key={props.menuItem.id+"-"+i}>{item}</ListGroup.Item>
     });
 
     const setMenuPrices = props.menuItem.menuItemVariants.map((itemVariant) => {
-        return <Form.Group style={priceFormGroup} className="mb-3" key={`${itemVariant.id}-${itemVariant.menuItemId}`} >
-            <Form.Label style={priceLabelStyle}>{itemVariant.variantName}</Form.Label>
-            <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />
-        </Form.Group>;
+        return <MenuItemPrice key={"menuItemPrice" + itemVariant.id} itemVariant={itemVariant} menuItem={props.menuItem} />;
     });
 
     return (
@@ -69,4 +35,16 @@ export default function MenuSetMealCard(props: Props) {
             </Card>
         </>
     )
+}
+
+const cardStyle = {
+    width: '325px'
+}
+
+const cardBodyStyle = {
+    textAlign: 'start' as const
+}
+
+const cardPriceBodyStyle = {
+    flex: 'none' as const
 }

@@ -2,17 +2,19 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace FlyingFishMenuWeb.Server.Model;
 
 public partial class MenuItemVariant
 {
+    [Key]
     public string Id { get; set; }
 
     public string VariantName { get; set; }
 
-    public decimal? Price { get; set; }
+    public float? Price { get; set; }
 
     public string MenuItemId { get; set; }
     public bool? IsVegetarian { get; set; }
