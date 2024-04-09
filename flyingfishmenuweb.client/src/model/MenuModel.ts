@@ -24,6 +24,5 @@ export interface ItemVariant {
     variantName: string,
     price: number,
     isVegetarian: boolean,
-    menuItemId: string,
-    menuItem: MenuItem
+    menuItemId: string
 }

@@ -14,3 +14,5 @@ export const contactUs: string = "Contact us"
 export const about: string = "About";
 export const basket: string = "Basket";
 export const foodAllergies: string = "FoodAllergies";
+
+export const basketSessionState = "savedBasketSessionState";

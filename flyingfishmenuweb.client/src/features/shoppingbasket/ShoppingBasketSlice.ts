@@ -2,14 +2,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ShoppingBasketContent, ItemVariant } from '../../model/MenuModel.ts';
 
+import { basketSessionState } from '../../consts.ts';
+
 // Define a type for the slice state
 interface ShoppingBasket {
     value: ShoppingBasketContent[]
 }
 
+const sessionStateBasket = sessionStorage.getItem(basketSessionState); 
+
 // Define the initial state using that type
 const initialState: ShoppingBasket = {
-    value: []
+    value: sessionStateBasket == null ? [] : JSON.parse(sessionStateBasket)
 }
 
 export const shoppingBasketSlice = createSlice({
@@ -29,10 +33,14 @@ export const shoppingBasketSlice = createSlice({
             else {
                 state.value = [...state.value, { itemVariant: payload.itemVariant, qty: 1, menuItem: payload.menuItem }]
             }
+
+            sessionStorage.setItem(basketSessionState, JSON.stringify(state.value));
         },
 
         itemDeletedFromBasket: (state, action: PayloadAction<ItemVariant>) => {
             state.value = state.value.filter((x) => x.itemVariant.id != action.payload.id);
+
+            sessionStorage.setItem(basketSessionState, JSON.stringify(state.value));
         }
     }
 })

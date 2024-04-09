@@ -27,7 +27,7 @@ export default function ShoppingBasket() {
 
         const variantName: string = itemVariant.variantName != null && itemVariant.variantName.length > 0 ? "(" + itemVariant.variantName + ")" : ""
 
-        return <Card key={`basketItem-${itemVariant.variantName}`} style={basketItemContainerStyle}>
+        return <Card key={`basketItem-${itemVariant.id}`} style={basketItemContainerStyle}>
             <Card.Title>
                 {`${itemVariant.id} - ${menuItem.name} ${variantName}`}
             </Card.Title>
@@ -38,7 +38,7 @@ export default function ShoppingBasket() {
                 <b>Subtotal: </b>{`${currencySymbol}${(itemVariant.price * qty).toFixed(2)}`}
             </Card.Text>
             <Card.Text>
-                <Button variant="danger" onClick={() => dispatch(itemDeletedFromBasket(itemVariant))}>Remove All</Button>
+                <Button variant="danger" onClick={() => { dispatch(itemDeletedFromBasket(itemVariant)) }}>Remove All</Button>
             </Card.Text>
         </Card>
     });

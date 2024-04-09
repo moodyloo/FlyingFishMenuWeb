@@ -1,8 +1,9 @@
 import { ItemVariant, MenuItem } from "./model/MenuModel.ts";
-import { Form, Button } from 'react-bootstrap';
-import { useAppSelector, useAppDispatch } from './app/hooks.ts'
+import { Form } from 'react-bootstrap';
+import { useAppSelector } from './app/hooks.ts'
 import { CurrencySymbolDictionary } from './consts.ts';
-import { itemAddedToBasket } from './features/shoppingbasket/ShoppingBasketSlice.ts';
+
+import MenuItemAddButton from './MenuItemAddButton.tsx';
 
 interface Props {
     itemVariant: ItemVariant,
@@ -14,13 +15,12 @@ export default function MenuItemPrice(props: Props) {
     const countryISO = useAppSelector((state) => state.countryISO.value);
     const currencySymbol = CurrencySymbolDictionary[countryISO];
 
-    const dispatch = useAppDispatch();
 
     const itemVariantPriceComponent: JSX.Element =
         <Form.Group style={priceFormGroup} className="mb-2" key={`${itemVariant.id}-${itemVariant.menuItemId}`} >
             <Form.Label style={priceLabelStyle}>{itemVariant.variantName}</Form.Label>
             <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />
-            <Button variant="primary" onClick={() => dispatch(itemAddedToBasket({ itemVariant: itemVariant, qty: 0,menuItem: menuItem }))}>+</Button>
+            <MenuItemAddButton itemVariant={itemVariant} menuItem={menuItem} />
         </Form.Group>;
 
     return (
