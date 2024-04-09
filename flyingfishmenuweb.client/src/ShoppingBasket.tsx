@@ -49,7 +49,7 @@ export default function ShoppingBasket() {
             <div style={cardGroupStyle}>
                 <Card style={totalStyle}>
                     <Card.Title>{`Total: ${currencySymbol}${getTotalCost()}`}</Card.Title>
-                    <Card.Text>We only take collection orders at the moment</Card.Text>
+                    <Card.Text>We only take pre-order by phone(01252 444 747) and in-shop collection orders at the moment, sorry for any inconvenience</Card.Text>
                 </Card>
                 <Card style={basketContentStyle}>
                     {shoppingBasketItemComponents}
