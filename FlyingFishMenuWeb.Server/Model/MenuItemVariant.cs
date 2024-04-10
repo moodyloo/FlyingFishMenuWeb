@@ -18,6 +18,7 @@ public partial class MenuItemVariant
 
     public string MenuItemId { get; set; }
     public bool? IsVegetarian { get; set; }
+    public bool? IsUnavailable { get; set; }
 
     [JsonIgnore]
     public virtual MenuItem MenuItem { get; set; }

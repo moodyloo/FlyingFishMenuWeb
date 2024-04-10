@@ -19,7 +19,7 @@ export default function MenuItemPrice(props: Props) {
     const itemVariantPriceComponent: JSX.Element =
         <Form.Group style={priceFormGroup} className="mb-2" key={`${itemVariant.id}-${itemVariant.menuItemId}`} >
             <Form.Label style={priceLabelStyle}>{itemVariant.variantName}</Form.Label>
-            <Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />
+            {itemVariant.isUnavailable ? null : < Form.Control disabled style={priceTextBoxStyle} type="text" placeholder={`${currencySymbol}${itemVariant.price.toFixed(2)}`} />}
             <MenuItemAddButton itemVariant={itemVariant} menuItem={menuItem} />
         </Form.Group>;
 
@@ -51,7 +51,7 @@ const priceLabelStyle = {
 const fieldSetStyle = {
     border: '1px solid green',
     borderRadius: '10px',
-    backgroundColor: '#e0ffe0'
+    backgroundColor: 'transparent'
 }
 
 

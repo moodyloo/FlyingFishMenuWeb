@@ -27,6 +27,14 @@ document.head.appendChild(preconnectLink);
 
 const root = createRoot(document.getElementById('root')!);
 
+//Toggle dark/light mode based on window settings
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.getElementsByTagName('html')[0].setAttribute('data-bs-theme','dark')
+}
+else {
+    document.getElementsByTagName('html')[0].removeAttribute('data-bs-theme');
+}
+
 root.render(
     <React.StrictMode>
         <ErrorBoundary fallback={<ErrorPage/>}>

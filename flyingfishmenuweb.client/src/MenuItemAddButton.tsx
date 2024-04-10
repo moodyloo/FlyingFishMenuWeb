@@ -34,6 +34,9 @@ export default function MenuItemAddButton(props: Props) {
     }, [added]);
 
     return (
-        <Button variant={added ? "success" : "primary"} onClick={() => addItemFunction()} disabled={added}>{added ? "✔" : "+"}</Button>
+        <>
+            {itemVariant.isUnavailable ? <Button variant="secondary" disabled>Unavailable</Button> : <Button variant={added ? "success" : "primary"} onClick={() => addItemFunction()} disabled={added}>{added ? "✔" : "+"}</Button >}
+        </>
+        
     )
 }

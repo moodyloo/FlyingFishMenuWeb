@@ -3,6 +3,7 @@ using System;
 using FlyingFishMenuWeb.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyingFishMenuWeb.Server.Migrations
 {
     [DbContext(typeof(FlyingFishContext))]
-    partial class FlyingFishContextModelSnapshot : ModelSnapshot
+    [Migration("20240410171201_Add-isunavailable-column-to-menu-item-variant")]
+    partial class Addisunavailablecolumntomenuitemvariant
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");

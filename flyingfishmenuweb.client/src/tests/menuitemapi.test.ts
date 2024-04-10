@@ -24,7 +24,8 @@ const menuItemTest: MenuItem = {
             variantName: "Pork & vegetables Tapas (3)",
             price: 3.5,
             menuItemId: "1",
-            isVegetarian: false
+            isVegetarian: false,
+            isUnavailable: false
         }
     ]
 }

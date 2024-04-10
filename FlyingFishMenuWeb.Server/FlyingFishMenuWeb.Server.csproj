@@ -27,12 +27,16 @@
   <ItemGroup>
     <None Remove="flyingfishsqlite.db" />
     <None Remove="sqliteDB Backup\flyingfishsqlite_07042024.db" />
+    <None Remove="sqliteDB Backup\flyingfishsqlite_10042024.db" />
     <None Remove="sqliteDB Backup\flyingfishsqlite_29032024.db" />
     <None Remove="sqliteDB Backup\flyingfishsqlite_30032024.db" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="flyingfishsqlite.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqliteDB Backup\flyingfishsqlite_10042024.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sqliteDB Backup\flyingfishsqlite_07042024.db">
