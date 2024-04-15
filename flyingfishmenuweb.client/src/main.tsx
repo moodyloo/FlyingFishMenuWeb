@@ -36,7 +36,7 @@ else {
 }
 
 root.render(
-    <React.StrictMode>
+    
         <ErrorBoundary fallback={<ErrorPage/>}>
             <Provider store={store}>
                 <BrowserRouter>
@@ -44,6 +44,5 @@ root.render(
                 </BrowserRouter>
             </Provider>
         </ErrorBoundary>
-    </React.StrictMode>
 );
 
