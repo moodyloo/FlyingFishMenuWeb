@@ -54,6 +54,7 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 });
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(

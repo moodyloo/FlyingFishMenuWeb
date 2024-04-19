@@ -1,32 +1,37 @@
 import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 
 import { MenuCategory } from './model/MenuModel.ts';
 import { companyName } from './consts.ts';
 
-import { Container, Row, Spinner } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 import './MenuCategorySelection.css';
 
-import ImageButton from './ImageButton.tsx';
 import Title from './Title.tsx';
+import Loading from './Loading.tsx';
 
 interface Props {
     menuCategories: MenuCategory[];
 }
 
+const ImageButton = lazy(() => import('./ImageButton.tsx'));
+
 export default function MenuCategorySelection(props: Props) {
     const menuCategoryTabs = props.menuCategories.map(({ categoryName, imageUrl, id }) => {
         return <Row key={"menuCategory-" + id}>
-            <Link to={`/${categoryName}`}>
-                <ImageButton imageText={categoryName} imageUrl={imageUrl} />
-            </Link>
+            <Suspense fallback={<div/>}>
+                <Link to={`/${categoryName}`}>
+                    <ImageButton imageText={categoryName} imageUrl={imageUrl} />
+                </Link>
+            </Suspense>
         </Row>
     });
 
     return (
         <>
             {
-                props.menuCategories.length == 0 ? <Spinner style={spinnerStyle} animation="border" /> :
+                props.menuCategories.length == 0 ? <Loading/>:
                 <>
                     <Title titleName={companyName} />
                     <Container style={containerStyle}>
@@ -37,10 +42,6 @@ export default function MenuCategorySelection(props: Props) {
         </>
     )
 }
-
-const spinnerStyle = {
-    margin: 'auto'
-} as const
 
 const containerStyle: object = {
     display: "flex",

@@ -8,7 +8,17 @@ using FlyingFishMenuWeb.Server.Model;
 
 namespace FlyingFishMenuWeb.Server.Data;
 
-public partial class FlyingFishContext : DbContext
+public interface IFlyingFishContext
+{
+    DbSet<ItemCategory> ItemCategories { get; set; }
+
+    DbSet<MenuItem> MenuItems { get; set; }
+
+    DbSet<MenuItemVariant> MenuItemVariants { get; set; }
+}
+
+
+public partial class FlyingFishContext : DbContext, IFlyingFishContext
 {
     public FlyingFishContext(DbContextOptions<FlyingFishContext> options)
         : base(options)

@@ -1,9 +1,10 @@
 import { Row, Form, Container } from 'react-bootstrap';
+import { lazy, Suspense } from 'react';
 
 import { MenuItem } from './model/MenuModel.ts';
 
-import MenuItemCard from './MenuItemCard.tsx';
-import MenuSetMealCard from './MenuSetMealCard.tsx';
+const MenuItemCard = lazy(() => import('./MenuItemCard.tsx'));
+const MenuSetMealCard = lazy(() => import('./MenuSetMealCard.tsx'));
 import Title from './Title.tsx';
 
 import './Menu.css';
@@ -25,7 +26,9 @@ export default function Menu(props: Props) {
     const menuItemComponents = props.menuItems.filter(menuItem => filterFunction(menuItem)).map((item) => {
 
         return <Row className="menuItemRow" key={"menu" + item.id}>
+            <Suspense fallback={<div/>}>
                 {item.category.isSetMeal ? <MenuSetMealCard menuItem={item} /> : <MenuItemCard menuItem={item} />}
+            </Suspense>
             </Row>
     });
 

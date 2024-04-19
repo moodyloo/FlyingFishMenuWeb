@@ -12,6 +12,10 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="FlyingFishMenuWebServer.Tests" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="sqliteDB\**" />

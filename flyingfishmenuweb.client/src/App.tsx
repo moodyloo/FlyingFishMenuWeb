@@ -1,12 +1,14 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, lazy, Suspense } from 'react'
+
 import './App.css'
-import Menu from './Menu.tsx';
 import ErrorPage from './ErrorPage.tsx';
-import MenuCategorySelection from './MenuCategorySelection.tsx';
-import Location from './Location.tsx';
-import About from './About.tsx';
 import AllergyModal from './AllergyModal.tsx';
-import ShoppingBasket from './ShoppingBasket.tsx';
+import Loading from './Loading.tsx';
+const MenuCategorySelection = lazy(() => import('./MenuCategorySelection.tsx'));
+const ShoppingBasket = lazy(() => import('./ShoppingBasket.tsx'));
+const Menu = lazy(() => import('./Menu.tsx'));
+const Location = lazy(() => import('./Location.tsx'));
+const About = lazy(() => import('./About.tsx'));
 
 import { getAllMenuItem, getMenuCategories } from './api/MenuItemAPI.ts';
 import { getImageUrl } from './provider/ImageProvider.ts';
@@ -60,7 +62,7 @@ export default function App() {
     },[location]);
 
     const menuCategoryRoutes = menuCategories.map((menuCategory: MenuCategory) => {
-        return <Route key={"route/" + menuCategory.id} errorElement={<ErrorPage />} path={`/${menuCategory.categoryName}`} element={<Menu menuItems={menuItems.filter(menuItem => menuItem.category.id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} />} />
+        return <Route key={"route/" + menuCategory.id} errorElement={<ErrorPage />} path={`/${menuCategory.categoryName}`} element={<Suspense fallback={<Loading/>}><Menu menuItems={menuItems.filter(menuItem => menuItem.category.id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} /></Suspense>} />
     });
 
     return (
@@ -69,10 +71,10 @@ export default function App() {
                 <div style={backgroundStyle} />
                 <AllergyModal visible={sessionStorage.getItem("popup_shown") != "1"} />
                 <Routes>
-                    <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<MenuCategorySelection menuCategories={menuCategories} />} />
-                    <Route key={'location/'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Location mapApiKey={mapApiKey} />} />
-                    <Route key={'about/'} errorElement={<ErrorPage />} path={`/${about}`} element={<About />} />
-                    <Route key={'basket/'} errorElement={<ErrorPage />} path={`/${basket}`} element={<ShoppingBasket />} />
+                    <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<Suspense fallback={<Loading/>}><MenuCategorySelection menuCategories={menuCategories} /></Suspense>} />
+                    <Route key={'location/'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Suspense fallback={<Loading/>}><Location mapApiKey={mapApiKey} /></Suspense>} />
+                    <Route key={'about/'} errorElement={<ErrorPage />} path={`/${about}`} element={<Suspense fallback={<Loading/>}><About /></Suspense>} />
+                    <Route key={'basket/'} errorElement={<ErrorPage />} path={`/${basket}`} element={<Suspense fallback={<Loading/>}><ShoppingBasket /></Suspense>} />
                     {menuCategoryRoutes}
                 </Routes>
             </div>
