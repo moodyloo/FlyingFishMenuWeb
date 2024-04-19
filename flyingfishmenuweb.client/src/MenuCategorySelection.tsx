@@ -2,13 +2,11 @@ import { Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
 import { MenuCategory } from './model/MenuModel.ts';
-import { companyName } from './consts.ts';
 
 import { Container, Row } from 'react-bootstrap';
 
 import './MenuCategorySelection.css';
 
-import Title from './Title.tsx';
 import Loading from './Loading.tsx';
 
 interface Props {
@@ -33,7 +31,6 @@ export default function MenuCategorySelection(props: Props) {
             {
                 props.menuCategories.length == 0 ? <Loading/>:
                 <>
-                    <Title titleName={companyName} />
                     <Container style={containerStyle}>
                         {menuCategoryTabs}
                     </Container>

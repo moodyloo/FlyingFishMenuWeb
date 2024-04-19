@@ -4,6 +4,7 @@ import './App.css'
 import ErrorPage from './ErrorPage.tsx';
 import AllergyModal from './AllergyModal.tsx';
 import Loading from './Loading.tsx';
+import Title from './Title.tsx';
 const MenuCategorySelection = lazy(() => import('./MenuCategorySelection.tsx'));
 const ShoppingBasket = lazy(() => import('./ShoppingBasket.tsx'));
 const Menu = lazy(() => import('./Menu.tsx'));
@@ -12,7 +13,7 @@ const About = lazy(() => import('./About.tsx'));
 
 import { getAllMenuItem, getMenuCategories } from './api/MenuItemAPI.ts';
 import { getImageUrl } from './provider/ImageProvider.ts';
-import { contactUs, about, basket, googleApiKey } from './consts.ts';
+import { contactUs, about, basket, companyName, googleApiKey } from './consts.ts';
 
 //BootStrap
 import { MenuCategory, MenuItem } from './model/MenuModel.ts';
@@ -59,10 +60,17 @@ export default function App() {
 
     useEffect(() => {
         setSearchText("");
-    },[location]);
+    }, [location]);
+
+    const getTitleNameFromPath = (): string => {
+        const pathName = location.pathname.replaceAll('/', '').replaceAll('%20', ' ');
+
+        if (pathName.trim() == "") return companyName;
+        return pathName;
+    }
 
     const menuCategoryRoutes = menuCategories.map((menuCategory: MenuCategory) => {
-        return <Route key={"route/" + menuCategory.id} errorElement={<ErrorPage />} path={`/${menuCategory.categoryName}`} element={<Suspense fallback={<Loading/>}><Menu menuItems={menuItems.filter(menuItem => menuItem.category.id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} /></Suspense>} />
+        return <Route key={"/" + menuCategory.categoryName} errorElement={<ErrorPage />} path={`/${menuCategory.categoryName}`} element={<Suspense fallback={<Loading />}><Menu menuItems={menuItems.filter(menuItem => menuItem.category.id == menuCategory.id)} searchText={searchText} setSearchText={setSearchText} /></Suspense>} />
     });
 
     return (
@@ -70,11 +78,12 @@ export default function App() {
             <div id="rootlight">
                 <div style={backgroundStyle} />
                 <AllergyModal visible={sessionStorage.getItem("popup_shown") != "1"} />
+                <Title titleName={getTitleNameFromPath()} />
                 <Routes>
-                    <Route key={'route/'} errorElement={<ErrorPage />} path="/" element={<Suspense fallback={<Loading/>}><MenuCategorySelection menuCategories={menuCategories} /></Suspense>} />
-                    <Route key={'location/'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Suspense fallback={<Loading/>}><Location mapApiKey={mapApiKey} /></Suspense>} />
-                    <Route key={'about/'} errorElement={<ErrorPage />} path={`/${about}`} element={<Suspense fallback={<Loading/>}><About /></Suspense>} />
-                    <Route key={'basket/'} errorElement={<ErrorPage />} path={`/${basket}`} element={<Suspense fallback={<Loading/>}><ShoppingBasket /></Suspense>} />
+                    <Route key={'/' + companyName} errorElement={<ErrorPage />} path={"/"} element={<Suspense fallback={<Loading/>}><MenuCategorySelection menuCategories={menuCategories} /></Suspense>} />
+                    <Route key={'/location'} errorElement={<ErrorPage />} path={`/${contactUs}`} element={<Suspense fallback={<Loading/>}><Location mapApiKey={mapApiKey} /></Suspense>} />
+                    <Route key={'/about'} errorElement={<ErrorPage />} path={`/${about}`} element={<Suspense fallback={<Loading/>}><About /></Suspense>} />
+                    <Route key={'/basket'} errorElement={<ErrorPage />} path={`/${basket}`} element={<Suspense fallback={<Loading/>}><ShoppingBasket /></Suspense>} />
                     {menuCategoryRoutes}
                 </Routes>
             </div>

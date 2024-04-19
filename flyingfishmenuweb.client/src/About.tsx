@@ -1,9 +1,5 @@
 import { Card, Image, CardGroup, Carousel } from 'react-bootstrap';
 
-import { about } from './consts.ts';
-
-import Title from './Title.tsx';
-
 import flyingfish from './assets/flyingfish.webp';
 import flyingfish2 from './assets/flyingfish2.webp';
 import flyingfish3 from './assets/flyingfish3.webp';
@@ -12,7 +8,6 @@ import flyingfish3 from './assets/flyingfish3.webp';
 export default function About() {
     return (
         <>
-            <Title titleName={about} />
             <CardGroup style={cardGroupStyle}>
                 <Card style={cardImagesStyle} bg="secondary">
                     <Carousel style={carouselStyle} slide>

@@ -2,10 +2,7 @@ import { useCallback, memo } from 'react'
 import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 import { Card, Image, CardGroup } from 'react-bootstrap';
 
-import Title from './Title.tsx';
 import OpeningTimeTable from './OpeningTimeTable.tsx';
-
-import { contactUs } from './consts.ts';
 
 import locationIcon from './assets/location.webp';
 import phoneIcon from './assets/phone.webp';
@@ -39,7 +36,6 @@ const Location = memo(function Location(props: Props) {
 
     return (
         <>
-            <Title titleName={contactUs} />
             <CardGroup style={cardGroupStyle}>
                 <Card style={cardContactDetailsStyle}>
                     <Card.Body>

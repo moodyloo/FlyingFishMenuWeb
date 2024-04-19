@@ -5,7 +5,6 @@ import { MenuItem } from './model/MenuModel.ts';
 
 const MenuItemCard = lazy(() => import('./MenuItemCard.tsx'));
 const MenuSetMealCard = lazy(() => import('./MenuSetMealCard.tsx'));
-import Title from './Title.tsx';
 
 import './Menu.css';
 
@@ -34,7 +33,6 @@ export default function Menu(props: Props) {
 
     return (
         <>
-            <Title titleName={props.menuItems[0]?.category.categoryName} />
             <Form.Control style={searchBarStyle} size="sm" type="text" placeholder="Search dishes" value={props.searchText} onChange={(e) => props.setSearchText(e.target.value)} />
             <Container style={containerStyle} fluid>
                 {menuItemComponents}

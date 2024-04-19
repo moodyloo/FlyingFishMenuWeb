@@ -1,3 +1,4 @@
+import { useState } from 'react';
 
 import { Navbar,Container, Nav } from 'react-bootstrap';
 
@@ -9,18 +10,19 @@ interface Props {
     titleName: string;
 }
 export default function Title(props: Props) {
+    const [expanded, setExpanded] = useState(false);
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" style={titleStyle}>
+            <Navbar expanded={expanded} expand="lg" style={titleStyle}>
                 <Container>
                     <Navbar.Brand style={titleNameStyle}>{props.titleName}</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(!expanded)} />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto" style={navStyle}>
-                            <Nav.Link as={Link} to="/">Main Menu</Nav.Link>
-                            <Nav.Link as={Link} to={`/${contactUs}`}>Contact Us</Nav.Link>
-                            <Nav.Link as={Link} to={`/${about}`}>About</Nav.Link>
-                            <Nav.Link as={Link} to={`/${basket}`}>Basket</Nav.Link>
+                        <Nav className="me-auto" >
+                            <Nav.Link as={Link} to="/" style={navlinkStyle} onClick={() => setExpanded(false)} >Main Menu</Nav.Link>
+                            <Nav.Link as={Link} to={`/${contactUs}`} style={navlinkStyle} onClick={() => setExpanded(false)}>Contact Us</Nav.Link>
+                            <Nav.Link as={Link} to={`/${about}`} style={navlinkStyle} onClick={() => setExpanded(false)}>About</Nav.Link>
+                            <Nav.Link as={Link} to={`/${basket}`} style={navlinkStyle} onClick={() => setExpanded(false)}>Basket</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -28,8 +30,9 @@ export default function Title(props: Props) {
         </>
     )
 }
-const navStyle = {
-    marginLeft: '20px'
+
+const navlinkStyle = {
+    color: 'black'
 }
 
 const titleStyle = {
@@ -38,6 +41,8 @@ const titleStyle = {
 }
 
 const titleNameStyle = {
-    fontSize: '35px',
-    fontFamily: 'cursive'
+    fontSize: '30px',
+    fontFamily: 'cursive',
+    color: 'black',
+    marginRight: '50px'
 }

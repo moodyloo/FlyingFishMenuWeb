@@ -1,10 +1,8 @@
 import { useAppSelector, useAppDispatch } from './app/hooks.ts'
 import { CurrencySymbolDictionary } from './consts.ts';
 import { itemDeletedFromBasket } from './features/shoppingbasket/ShoppingBasketSlice.ts';
-import Title from './Title.tsx';
 
-
-import { Card, Button} from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 export default function ShoppingBasket() {
 
@@ -45,7 +43,6 @@ export default function ShoppingBasket() {
 
     return (
         <>
-            <Title titleName="Basket"/>
             <div style={cardGroupStyle}>
                 <Card style={totalStyle}>
                     <Card.Title>{`Total: ${currencySymbol}${getTotalCost()}`}</Card.Title>
