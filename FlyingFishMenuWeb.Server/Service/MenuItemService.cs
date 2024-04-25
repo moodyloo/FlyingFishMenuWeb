@@ -18,6 +18,11 @@ namespace FlyingFishMenuWeb.Server.Service
             throw new NotImplementedException();
         }
 
+        public async Task<MenuItem> GetMenuItem(string id)
+        {
+            return await _menuItemRepository.GetMenuItem(id);
+        }
+
         public async Task<IEnumerable<MenuItem>> GetMenuItemsOrderByIsVegetarianAndPrice()
         {
             var result = await _menuItemRepository.GetMenuItemsOrderByIsVegetarianAndPrice();
@@ -28,6 +33,20 @@ namespace FlyingFishMenuWeb.Server.Service
         public Task<int> UpdateMenuItem(MenuItem newMenuItem)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<bool> AddNewMenuItem(MenuItem newMenuItem)
+        {
+            var existingMenuItem = await GetMenuItem(newMenuItem.Id);
+            if (existingMenuItem != null)
+            {
+                return false;
+            }
+            else
+            {
+                await _menuItemRepository.AddNewMenuItem(newMenuItem);
+                return true;
+            }
         }
 
 

@@ -27,22 +27,34 @@ namespace FlyingFish.server.Controllers
         [HttpGet("GetMenuItems")]
         public async Task<ActionResult<IEnumerable<MenuItem>>> GetMenuItems()
         {
-            try
-            {
-                var result = await _menuItemService.GetMenuItemsOrderByIsVegetarianAndPrice();
-                if (result.Count() == 0) return NoContent();
+            var result = await _menuItemService.GetMenuItemsOrderByIsVegetarianAndPrice();
+            if (result.Count() == 0) return NoContent();
 
+            return Ok(result);
+        }
+
+        [HttpGet("GetMenuItem/{id}")]
+        public async Task<ActionResult<MenuItem>> GetMenuItem(string id)
+        {
+            var result = await _menuItemService.GetMenuItem(id);
+            if (result != null)
+            {
                 return Ok(result);
             }
-            catch (Exception ex)
+            else return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MenuItem>> PostMenuItem([FromBody]MenuItem newMenuItem)
+        {
+            var success = await _menuItemService.AddNewMenuItem(newMenuItem);
+            if (success)
             {
-                _logger.LogError(ex.ToString());
-                var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                {
-                    Content = new StringContent(string.Format(ex.ToString())),
-                    ReasonPhrase = "Exception in backend"
-                };
-                throw new HttpResponseException(response);
+                return CreatedAtAction("GetMenuItem", new { id = newMenuItem.Id });
+            }
+            else
+            {
+                return Conflict();
             }
         }
     }

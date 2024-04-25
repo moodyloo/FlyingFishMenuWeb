@@ -11,7 +11,7 @@ using Moq.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace FlyingFishMenuWebServer.Tests
+namespace FlyingFishMenuWebServer.Tests.controller
 {
     public class MenuItemControllerTest
     {
@@ -45,7 +45,7 @@ namespace FlyingFishMenuWebServer.Tests
                         VariantName = "Small Fish"
                     }
                 }
-            }    
+            }
         };
 
         [SetUp]
@@ -55,7 +55,7 @@ namespace FlyingFishMenuWebServer.Tests
             menuItemServiceMock = new Mock<IMenuItemService>();
             menuItemServiceMock.Setup(x => x.GetMenuItemsOrderByIsVegetarianAndPrice()).ReturnsAsync(menuItemsTest);
 
-            menuItemController = new MenuItemController(loggerMock.Object,menuItemServiceMock.Object);
+            menuItemController = new MenuItemController(loggerMock.Object, menuItemServiceMock.Object);
         }
 
         [Test]
@@ -64,8 +64,29 @@ namespace FlyingFishMenuWebServer.Tests
             var response = await menuItemController.GetMenuItems();
             var result = response.Result as OkObjectResult;
 
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Assert.That(result.Value, Is.EqualTo(menuItemsTest));
+        }
+
+        [Test]
+        [TestCase("1")]
+        public async Task GetMenuItem_ShouldReturnCorrectItemById(string id)
+        {
+            var response = await menuItemController.GetMenuItem(id);
+            var result = response.Result as OkObjectResult;
+
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Value, Is.EqualTo(menuItemsTest));
+        }
+
+        [Test]
+        [TestCase("wrong")]
+        public async Task GetMenuItem_ShouldReturnNothingForNonExistingItem(string id)
+        {
+            var response = await menuItemController.GetMenuItem(id);
+            var result = response.Result as NotFoundResult;
+
+            Assert.That(result, Is.Not.Null);
         }
     }
 }

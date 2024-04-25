@@ -21,6 +21,12 @@ namespace FlyingFishMenuWeb.Server.Repository
             return numberOfRowsDeleted;
         }
 
+        public async Task<MenuItem> GetMenuItem(string id)
+        {
+            var result = await _dbContext.MenuItems.SingleOrDefaultAsync(x => x.Id == id);
+            return result;
+        }
+
         public async Task<IEnumerable<MenuItem>> GetMenuItemsOrderByIsVegetarianAndPrice()
         {
             return await _dbContext.MenuItems
@@ -42,6 +48,13 @@ namespace FlyingFishMenuWeb.Server.Repository
             .SetProperty(b => b.Category, newMenuItem.Category));
             await _dbContext.SaveChangesAsync();
             return numberOfUpdated;
+        }
+
+        public async Task<bool> AddNewMenuItem(MenuItem newMenuItem)
+        {
+            var result = _dbContext.Add<MenuItem>(newMenuItem);
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
     }
 }

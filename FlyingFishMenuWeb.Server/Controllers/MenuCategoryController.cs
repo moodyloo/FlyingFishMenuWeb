@@ -27,24 +27,11 @@ namespace FlyingFish.server.Controllers
         [HttpGet("GetMenuCategories")]
         public async Task<ActionResult<IEnumerable<ItemCategory>>> GetMenuCategory()
         {
-            try
-            {
-                var result = await _menuCategoryService.GetMenuItemCategories();
+            var result = await _menuCategoryService.GetMenuItemCategories();
 
-                if (result.Count() == 0) return NoContent();
+            if (result.Count() == 0) return NoContent();
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.ToString());
-                var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                {
-                    Content = new StringContent(string.Format(ex.ToString())),
-                    ReasonPhrase = "Exception in backend"
-                };
-                throw new HttpResponseException(response);
-            }
+            return Ok(result);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace FlyingFishMenuWebServer.Tests
         {
             string path = "/api/MenuCategory/GetMenuCategories";
             HttpResponseMessage result = await _client.GetAsync(path);
-            Assert.True(result.IsSuccessStatusCode);
+            Assert.That(result.IsSuccessStatusCode,Is.True);
         }
     }
 }

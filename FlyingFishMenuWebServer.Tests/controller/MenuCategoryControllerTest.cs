@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 
-namespace FlyingFishMenuWebServer.Tests
+namespace FlyingFishMenuWebServer.Tests.controller
 {
     public class MenuCategoryControllerTest
     {
@@ -23,7 +23,7 @@ namespace FlyingFishMenuWebServer.Tests
                 CategoryName = "Fish & Chips",
                 IsSetMeal = false,
                 ImageUrl = "fish&chips.webp"
-            } 
+            }
         };
 
         [SetUp]
@@ -33,7 +33,7 @@ namespace FlyingFishMenuWebServer.Tests
             menuCategoryServiceMock = new Mock<IMenuCategoryService>();
             menuCategoryServiceMock.Setup(x => x.GetMenuItemCategories()).ReturnsAsync(menuCategoriesTest);
 
-            menuCategoryController = new MenuCategoryController(loggerMock.Object,menuCategoryServiceMock.Object);
+            menuCategoryController = new MenuCategoryController(loggerMock.Object, menuCategoryServiceMock.Object);
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace FlyingFishMenuWebServer.Tests
             var response = await menuCategoryController.GetMenuCategory();
             var result = response.Result as OkObjectResult;
 
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Assert.That(result.Value, Is.EqualTo(menuCategoriesTest));
         }
     }

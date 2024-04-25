@@ -5,29 +5,29 @@ using Microsoft.Data.Sqlite;
 using Windows.Storage;
 using FlyingFishMenuWeb.Server.Repository;
 using FlyingFishMenuWeb.Server.Service;
+using Azure.Identity;
+using FlyingFishMenuWeb.Server.Logger;
+using Microsoft.Extensions.DependencyInjection;
+using Windows.UI.Xaml;
 
 var builder = WebApplication.CreateBuilder(args);
 
-/**
+
+//Add Azure Key Vault
 var clientId = builder.Configuration["AzureAD:ClientId"];
 var clientSecret = builder.Configuration["AzureAD:ClientSecret"];
 var tenantId = builder.Configuration["AzureAD:TenantId"];
-
-//Add Azure Key Vault
-if (builder.Environment.IsProduction())
-{
-    builder.Logging.AddConsole();
-    builder.Logging.AddDebug();
-    builder.Logging.AddAzureWebAppDiagnostics();
-
-    builder.Services.Configure<AzureFileLoggerOptions>(builder.Configuration.GetSection("AzureLogging"));
-}
 
 builder.Configuration.AddAzureKeyVault(
     new Uri($"https://{builder.Configuration["AzureAD:KeyVaultName"]}.vault.azure.net/"),
     new ClientSecretCredential(tenantId, clientId, clientSecret));
 
-*/
+//Database logger
+builder.Logging.AddDbLogger(options =>
+{
+    builder.Configuration.GetSection("Logging").GetSection("Database").GetSection("Options").Bind(options);
+});
+
 
 SqliteConnectionStringBuilder sqliteConnectionString = new SqliteConnectionStringBuilder();
 sqliteConnectionString.DataSource = $"{Directory.GetCurrentDirectory()}\\flyingfishsqlite.db";
@@ -37,6 +37,7 @@ sqliteConnectionString.DefaultTimeout = 5000;
 builder.Services.AddDbContext<FlyingFishContext>(options =>
                    options.UseSqlite(sqliteConnectionString.ConnectionString)//builder.Configuration["FlyingFishDatabaseConnection"])
                    , optionsLifetime: ServiceLifetime.Scoped);
+
 
 builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 builder.Services.AddScoped<IMenuItemService,MenuItemService>();
